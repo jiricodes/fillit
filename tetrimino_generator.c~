@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:26:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/30 14:42:33 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/10/30 12:55:58 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "libft/libft.h"
 #include "libft/get_next_line.h"
 #include <stdio.h>
-
-/* CUNT */
 
 typedef struct	s_tetrox
 {
