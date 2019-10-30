@@ -6,69 +6,54 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/10/30 13:39:17 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/10/30 18:48:45 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "input.h"
+#include "fillit.h"
 #include <stdio.h>
 
-int		check_input(char *str)
+int		check_input(char *tetro)
 {
-	int nlcnt;
-	int x;
-	int y;
+	int		x;
+	int		len;
 
-	y = 0;
-	nlcnt = 0;
-	while (str)
+	len = ft_strlen(tetro);
+	x = 0;
+	while (tetro[x] != '\0')
 	{
-		while (nlcnt != 5)
-		{
-			x = 0;
-			while (str[x + y] != '\n')
-				x++;
-			printf("%d", x);
-			if (str[x + y + 1] == '\n' && x != 4)
-				return (0);
-			else
-			{
-				nlcnt++;
-				y += 5;
-			}
-		}
+		if (tetro[x] != '.' && tetro[x] != '#' && tetro[x] != '\n')
+			return (-1);
+		x++;
 	}
+	if (len == 21 && tetro[len - 1] != '\n')
+	{
+		return (-1);
+	}
+
 	return (1);
+
 }
 
-
-int	get_input(char **argv)
+int		get_input(char **argv)
 {
+	char	*buf;
 	int		fd;
 	int		ret;
-	char	*buf;
-	char	*string;
-	int		input;
+	int		x;
+	char	**tetro;
 
-	string = ft_strnew(1);
-	buf = malloc((BUFF_SIZE + 1) * sizeof(char));
+	x = 0;
+	tetro = (char **)malloc(26 * sizeof(char*));
+	buf = (char *)malloc(22 * sizeof(char));
 	fd = open(argv[1], O_RDONLY);
-	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
+	while ((ret = read(fd, buf, 21)) > 0)
 	{
 		buf[ret] = '\0';
-		string = ft_strjoin(string, buf);
+		tetro[x] = buf;
+		printf("Tetromino %d is:\n%s", x, tetro[x]);
+		if ((check_input(tetro[x])) != 1)
+			printf("Input is shit");
+		x++;
 	}
-	printf("This is the string:\n%s\n", string);
-	input = check_input(string);
-	printf("\nInput is:\n%d", input);
-	return (0);
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc == 2)
-		get_input(argv);
-	else
-		ft_putstr("usage : don't put crap input\n");
-	return (0);
 }
