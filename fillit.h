@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/30 14:50:25 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:13:47 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ typedef struct	s_coords
 }				t_coords;
 
 /*
+**	Tile struct
+*/
+
+typedef struct	s_tile
+{
+	char value;
+	t_coords loc;
+}				t_tile;
+/*
 ** Tetrimino struct
 */
 
@@ -36,4 +45,21 @@ typedef struct	s_tetrimino
 	t_coords	tile[4];
 }				t_tetr;
 
+/*
+** Board/Map struct
+*/
+
+typedef struct	s_map
+{
+	int	size;
+	t_tile	*tile;
+}				t_map;
+
+
+/*
+**	Map functions
+*/
+
+int		init_map(t_map *map, int size);
+int		tetr_to_map(t_map *map, t_tetr *tetrimino, int x, int y);
 #endif

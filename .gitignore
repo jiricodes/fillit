@@ -1,3 +1,4 @@
 # shit to ignore
 *.DS_Store
 *.o
+*~
