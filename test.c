@@ -1,58 +1,329 @@
 #include "fillit.h"
 #include <stdio.h>
 
-int main ()
+void	initial_tetr(t_tetr **tetr)
 {
-	t_tetr	t;
-	t_tetr	t2;
+	int i;
+
+	i = 0;
+	while (i < 19)
+	{
+		tetr[i] = (t_tetr*)malloc(sizeof(t_tetr));
+		i = i + 1;
+	}
+
+	/*
+	** #### "I-block H"
+	*/
+
+	
+	tetr[0]->tile[0].x = 0;
+	tetr[0]->tile[0].y = 0;
+	tetr[0]->tile[1].x = 0;
+	tetr[0]->tile[1].y = 1;
+	tetr[0]->tile[2].x = 0;
+	tetr[0]->tile[2].y = 2;
+	tetr[0]->tile[3].x = 0;
+	tetr[0]->tile[3].y = 3;
+
+	/*
+	** #### "I-block V"
+	*/
+
+	tetr[1] = (t_tetr*)malloc(sizeof(t_tetr));
+	tetr[1]->tile[0].x = 0;
+	tetr[1]->tile[0].y = 0;
+	tetr[1]->tile[1].x = 1;
+	tetr[1]->tile[1].y = 0;
+	tetr[1]->tile[2].x = 2;
+	tetr[1]->tile[2].y = 0;
+	tetr[1]->tile[3].x = 3;
+	tetr[1]->tile[3].y = 0;
+
+	/*
+	** ##
+	**  ##  "Z-block H"
+	*/
+
+	tetr[2]->tile[0].x = 0;
+	tetr[2]->tile[0].y = 0;
+	tetr[2]->tile[1].x = 0;
+	tetr[2]->tile[1].y = 1;
+	tetr[2]->tile[2].x = 1;
+	tetr[2]->tile[2].y = 1;
+	tetr[2]->tile[3].x = 1;
+	tetr[2]->tile[3].y = 2;
+
+	/*
+	**   ##
+	**  ##  "S-block H"
+	*/
+
+	tetr[3]->tile[0].x = 0;
+	tetr[3]->tile[0].y = 0;
+	tetr[3]->tile[1].x = 0;
+	tetr[3]->tile[1].y = 1;
+	tetr[3]->tile[2].x = 1;
+	tetr[3]->tile[2].y = -1;
+	tetr[3]->tile[3].x = 1;
+	tetr[3]->tile[3].y = 0;
+	/*
+	** 	#
+	**  ##  "Z-block V"
+	**	 #
+	*/
+
+	tetr[4]->tile[0].x = 0;
+	tetr[4]->tile[0].y = 0;
+	tetr[4]->tile[1].x = 1;
+	tetr[4]->tile[1].y = 0;
+	tetr[4]->tile[2].x = 1;
+	tetr[4]->tile[2].y = 1;
+	tetr[4]->tile[3].x = 2;
+	tetr[4]->tile[3].y = 1;
+	/*
+	**   #
+	**  ##  "S-block H"
+	**	#
+	*/
+
+	tetr[5]->tile[0].x = 0;
+	tetr[5]->tile[0].y = 0;
+	tetr[5]->tile[1].x = 1;
+	tetr[5]->tile[1].y = -1;
+	tetr[5]->tile[2].x = 1;
+	tetr[5]->tile[2].y = 0;
+	tetr[5]->tile[3].x = 2;
+	tetr[5]->tile[3].y = -1;
+
+	/*
+	** 	##
+	**  ##  "O-block"
+	*/
+
+	tetr[6]->tile[0].x = 0;
+	tetr[6]->tile[0].y = 0;
+	tetr[6]->tile[1].x = 0;
+	tetr[6]->tile[1].y = 1;
+	tetr[6]->tile[2].x = 1;
+	tetr[6]->tile[2].y = 0;
+	tetr[6]->tile[3].x = 1;
+	tetr[6]->tile[3].y = 1;
+
+	/*
+	** 	#
+	**  #  "L-block 0"
+	**	##
+	*/
+
+	tetr[7]->tile[0].x = 0;
+	tetr[7]->tile[0].y = 0;
+	tetr[7]->tile[1].x = 1;
+	tetr[7]->tile[1].y = 0;
+	tetr[7]->tile[2].x = 2;
+	tetr[7]->tile[2].y = 0;
+	tetr[7]->tile[3].x = 2;
+	tetr[7]->tile[3].y = 1;
+
+	/*
+	**   #
+	**   #  "J-block 0"
+	**	##
+	*/
+
+	tetr[8]->tile[0].x = 0;
+	tetr[8]->tile[0].y = 0;
+	tetr[8]->tile[1].x = 1;
+	tetr[8]->tile[1].y = 0;
+	tetr[8]->tile[2].x = 2;
+	tetr[8]->tile[2].y = -1;
+	tetr[8]->tile[3].x = 2;
+	tetr[8]->tile[3].y = 0;
+
+	/*
+	**  #
+	**	### "J-block 90"
+	*/
+
+	tetr[9]->tile[0].x = 0;
+	tetr[9]->tile[0].y = 0;
+	tetr[9]->tile[1].x = 1;
+	tetr[9]->tile[1].y = 0;
+	tetr[9]->tile[2].x = 1;
+	tetr[9]->tile[2].y = 1;
+	tetr[9]->tile[3].x = 1;
+	tetr[9]->tile[3].y = 2;
+
+	/*
+	**    #
+	**	### "L-block 270"
+	*/
+
+	tetr[10]->tile[0].x = 0;
+	tetr[10]->tile[0].y = 0;
+	tetr[10]->tile[1].x = 1;
+	tetr[10]->tile[1].y = -2;
+	tetr[10]->tile[2].x = 1;
+	tetr[10]->tile[2].y = -1;
+	tetr[10]->tile[3].x = 1;
+	tetr[10]->tile[3].y = 0;
+
+	/*
+	** 	##
+	**  #  "J-block 180"
+	**	#
+	*/
+
+	tetr[11]->tile[0].x = 0;
+	tetr[11]->tile[0].y = 0;
+	tetr[11]->tile[1].x = 0;
+	tetr[11]->tile[1].y = 1;
+	tetr[11]->tile[2].x = 1;
+	tetr[11]->tile[2].y = 0;
+	tetr[11]->tile[3].x = 2;
+	tetr[11]->tile[3].y = 0;
+
+	/*
+	**  ##
+	**   # "L-block 180"
+	**	 #
+	*/
+
+	tetr[12]->tile[0].x = 0;
+	tetr[12]->tile[0].y = 0;
+	tetr[12]->tile[1].x = 0;
+	tetr[12]->tile[1].y = 1;
+	tetr[12]->tile[2].x = 1;
+	tetr[12]->tile[2].y = 1;
+	tetr[12]->tile[3].x = 2;
+	tetr[12]->tile[3].y = 1;
+
+	/*
+	**	### "L-block 90"
+	**  #
+	*/
+
+	tetr[13]->tile[0].x = 0;
+	tetr[13]->tile[0].y = 0;
+	tetr[13]->tile[1].x = 0;
+	tetr[13]->tile[1].y = 1;
+	tetr[13]->tile[2].x = 0;
+	tetr[13]->tile[2].y = 2;
+	tetr[13]->tile[3].x = 1;
+	tetr[13]->tile[3].y = 0;
+
+	/*
+	**	### "J-block 270"
+	**    #
+	*/
+
+	tetr[14]->tile[0].x = 0;
+	tetr[14]->tile[0].y = 0;
+	tetr[14]->tile[1].x = 0;
+	tetr[14]->tile[1].y = 1;
+	tetr[14]->tile[2].x = 0;
+	tetr[14]->tile[2].y = 2;
+	tetr[14]->tile[3].x = 1;
+	tetr[14]->tile[3].y = 2;
+
+	/*
+	**   #
+	**	### "T-block 180"
+	*/
+
+	tetr[15]->tile[0].x = 0;
+	tetr[15]->tile[0].y = 0;
+	tetr[15]->tile[1].x = 1;
+	tetr[15]->tile[1].y = -1;
+	tetr[15]->tile[2].x = 1;
+	tetr[15]->tile[2].y = 0;
+	tetr[15]->tile[3].x = 1;
+	tetr[15]->tile[3].y = 1;
+
+	/*
+	**	### "T-block 0"
+	**   #
+	*/
+
+	tetr[16]->tile[0].x = 0;
+	tetr[16]->tile[0].y = 0;
+	tetr[16]->tile[1].x = 0;
+	tetr[16]->tile[1].y = 1;
+	tetr[16]->tile[2].x = 0;
+	tetr[16]->tile[2].y = 2;
+	tetr[16]->tile[3].x = 1;
+	tetr[16]->tile[3].y = 1;
+
+	/*
+	**  #
+	**  ## "T-block 270"
+	**	#
+	*/
+	
+	tetr[17]->tile[0].x = 0;
+	tetr[17]->tile[0].y = 0;
+	tetr[17]->tile[1].x = 1;
+	tetr[17]->tile[1].y = 0;
+	tetr[17]->tile[2].x = 1;
+	tetr[17]->tile[2].y = 1;
+	tetr[17]->tile[3].x = 2;
+	tetr[17]->tile[3].y = 0;
+
+	/*
+	**   #
+	**  ##	"T-block 90"
+	**	 #
+	*/
+	
+	tetr[18]->tile[0].x = 0;
+	tetr[18]->tile[0].y = 0;
+	tetr[18]->tile[1].x = 1;
+	tetr[18]->tile[1].y = -1;
+	tetr[18]->tile[2].x = 1;
+	tetr[18]->tile[2].y = 0;
+	tetr[18]->tile[3].x = 2;
+	tetr[18]->tile[3].y = 0;
+}
+
+int main (int ac, char **av)
+{
+	t_tetr	*tetrimino;
 	t_map	map;
 	int		i;
 	int		size;
 	int		ret;
+	int		rng;
+	int		c;
 
-	t.name = 'A';
-	t.tile[0].x = 0;
-	t.tile[0].y = 0;
-	t.tile[1].x = 1;
-	t.tile[1].y = -1;
-	t.tile[2].x = 1;
-	t.tile[2].y = 0;
-	t.tile[3].x = 2;
-	t.tile[3].y = 0;
-
-	t2.name = 'B';
-	t2.tile[0].x = 0;
-	t2.tile[0].y = 0;
-	t2.tile[1].x = 0;
-	t2.tile[1].y = 1;
-	t2.tile[2].x = 0;
-	t2.tile[2].y = 2;
-	t2.tile[3].x = 0;
-	t2.tile[3].y = 3;
-
-	size = 10;
-	init_map(&map, size);
-	i = 0;
-	while (i < 3)
+	if (ac == 3)
 	{
-		ret = check_space(&map, i, &t);
-		if (ret == 0)
+		if (!(tetrimino = (t_tetr*)malloc(sizeof(t_tetr)*19)))
+			return (-1);
+		size = ft_atoi(av[2]);
+		init_map(&map, size);
+		initial_tetr(&tetrimino);
+		printf("Map and tetriminos initialized\n");
+		c = 0;
+		while (c < ft_atoi(av[1]))
 		{
-			tetr_to_map (&map, &t, map.tile[i].loc.x, map.tile[i].loc.y);
-			break ;
+			i = 0;
+			// rng = rand() % 19;
+			rng = 0;
+			tetrimino[rng].name = c + 65;
+			printf("Placing %d: tetrimino no. %d named '%c'\n", c, rng, tetrimino[rng].name);
+			while (i < size * size)
+			{
+				ret = check_space(&map, i, (&tetrimino)[rng]);
+				if (ret == 0)
+				{
+					tetr_to_map(&map, (&tetrimino)[rng], map.tile[i].loc.x, map.tile[i].loc.y);
+					break ;
+				}
+				i = i + 1;
+			}
+			c = c + 1;
 		}
-		i = i + 1;
+		print_map(&map);
 	}
-	i = 0;
-	while (i < size * size)
-	{
-		if (0 == check_space(&map, i, &t2))
-		{
-			tetr_to_map (&map, &t2, map.tile[i].loc.x, map.tile[i].loc.y);
-			break ;
-		}
-		i = i + 1;
-	}
-	print_map(&map);
 	return (0);
 }
