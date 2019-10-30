@@ -20,18 +20,12 @@ int main ()
 
 	size = 10;
 	init_map(&m, size);
-	if (-1 == tetr_to_map(&m, &t, 0, 0))
+	if (-1 == tetr_to_map(&m, &t, 2, 2))
 		{
 			printf(" Failed to assign tetrimino to the map!\n");
 			return (-1);
 		}
 	i = 0;
-	while (i < size * size)
-	{
-		ft_putchar(m.tile[i].value);
-		if (m.tile[i].loc.y == size - 1)
-			ft_putchar('\n');
-		i = i + 1;
-	}
+	print_map(&m);
 	return (0);
 }

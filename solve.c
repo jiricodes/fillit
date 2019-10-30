@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_map.c                                        :+:      :+:    :+:   */
+/*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 16:02:26 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/30 18:01:57 by jnovotny         ###   ########.fr       */
+/*   Created: 2019/10/30 17:53:35 by jnovotny          #+#    #+#             */
+/*   Updated: 2019/10/30 18:10:53 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	print_map(t_map *map)
+int	check_space(t_map *map, int i, t_tetr *tetrimino)
 {
-	int i;
+	int j;
 
-	i = 0;
-	while (i < MS * MS)
+	j = 0;
+	while (j < 4)
 	{
-		ft_putchar(MV);
-		if (MY == MS - 1)
-			ft_putchar('\n');
-		i = i + 1;
+		if ((MX + TX) < 0 || (MX + TX) > MS || (MY + TY) < 0 || (MY + TY) > MS)
+			return (-1);
 	}
 }

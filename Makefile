@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/23 10:28:32 by jnovotny          #+#    #+#              #
-#    Updated: 2019/10/30 17:15:43 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/10/30 17:52:09 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ LIB = ./libft/libft.a
 CFLAGS = -Wall -Werror -Wextra
 FTS =	initialize_map.c \
 		tetr_to_map.c \
+		print_map.c \
 		test.c
 GFT = tetrimino_generator.c
 TFILE =	testext1 \
