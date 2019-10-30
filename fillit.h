@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/30 18:04:27 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/10/30 19:02:12 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,5 @@ typedef struct	s_map
 int		init_map(t_map *map, int size);
 int		tetr_to_map(t_map *map, t_tetr *tetrimino, int x, int y);
 void	print_map(t_map *map);
+int		check_space(t_map *map, int org, t_tetr *tetrimino);
 #endif

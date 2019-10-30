@@ -6,11 +6,15 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/30 18:06:43 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/10/30 18:59:14 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Maybe change to receive index instad of coords
+*/
 
 int		tetr_to_map(t_map *map, t_tetr *tetrimino, int x, int y)
 {
