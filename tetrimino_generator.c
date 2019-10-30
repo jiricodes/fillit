@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:26:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/30 12:47:20 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/10/30 12:55:58 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -327,7 +327,7 @@ int main(int ac, char **av)
 	int fdw;
 	int ret;
 	int i, j, k, l;
-	int a, b;
+	int a, b, x;
 	t_tetrox	*tetriminos;
 
 
@@ -422,6 +422,7 @@ int main(int ac, char **av)
 				block[j] = ft_strdup("....\n");
 				j++;
 			}
+			x = rand() % 18;
 			j = 0;
 			while (j < 4)
 			{
@@ -431,7 +432,7 @@ int main(int ac, char **av)
 					l = 0;
 					while (l < 4)
 						{
-							if (tetriminos[i].tile[l].x == j && tetriminos[i].tile[l].y == k)
+							if (tetriminos[x].tile[l].x == j && tetriminos[x].tile[l].y == k)
 								block[j][k] = '#';
 							l++;
 						}
