@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/30 09:59:54 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/10/30 14:50:25 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ typedef struct	s_coords
 typedef struct	s_tetrimino
 {
 	char		name;
-	t_coords	tile1;
-	t_coords	tile2;
-	t_coords	tile3;
-	t_coords	tile4;
+	t_coords	tile[4];
 }				t_tetr;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:26:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/30 14:46:24 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/10/30 15:45:52 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "libft/libft.h"
 #include "libft/get_next_line.h"
 #include <stdio.h>
+#include <wchar.h>
+#include <locale.h>
 
 /* CUNT */
 
@@ -412,8 +414,11 @@ int main(int ac, char **av)
 		}
 		a = 0;
 		b = 0;
+		setlocale(LC_CTYPE,"UTF-8");
 		initial_tetr(tetriminos, a, b);
-		printf("\033[1;31mTetriminos %lc\033[0m\n", 0x2605);
+		printf("\033[1;31m");
+		printf("%lc\n", 0x2588);
+		printf("\033[0m");
 		i = 0;
 		while (i < ft_atoi(av[1]))
 		{
@@ -421,10 +426,13 @@ int main(int ac, char **av)
 			while (j < 4)
 			{
 				ft_strdel(&block[j]);
-				block[j] = ft_strdup("....\n");
+				if (j < 3)
+					block[j] = ft_strdup("....\n");
+				else
+					block[j] = ft_strdup("....");
 				j++;
 			}
-			x = rand() % 18;
+			x = rand() % 19;
 			j = 0;
 			while (j < 4)
 			{
@@ -446,10 +454,14 @@ int main(int ac, char **av)
 			while (j < 4)
 			{
 				printf("%s", block[j]);
+				ft_putstr_fd(block[j], fdw);
 				j++;
 			}
 			if ((i + 1) < ft_atoi(av[1]))
-				printf("\n");
+			{
+				printf("\n\n");
+				ft_putstr_fd("\n\n", fdw);
+			}
 			i++;
 		}
 		return (0);
