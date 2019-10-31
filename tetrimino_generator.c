@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:26:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/30 19:50:49 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/10/31 11:20:14 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <wchar.h>
 #include <locale.h>
+#include <time.h>
 
 /* CUNT */
 
@@ -337,6 +338,7 @@ int main(int ac, char **av)
 
 	if (ac == 2)
 	{
+		srand(time(0));
 		if (ft_atoi(av[1]) > 26 || ft_atoi(av[1]) < 1)
 		{
 			printf("\033[1;31m");
@@ -362,11 +364,11 @@ int main(int ac, char **av)
 		}
 		a = 0;
 		b = 0;
-		setlocale(LC_CTYPE,"UTF-8");
+		// setlocale(LC_CTYPE,"UTF-8");
 		initial_tetr(tetriminos, a, b);
-		printf("\033[1;31m");
-		printf("%lc\n", 0x2588);
-		printf("\033[0m");
+		// printf("\033[1;31m");
+		// printf("%lc\n", 0x2588);
+		// printf("\033[0m");
 		i = 0;
 		while (i < ft_atoi(av[1]))
 		{

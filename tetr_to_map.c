@@ -6,11 +6,12 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/30 20:52:29 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/10/31 11:13:29 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 /*
 ** Maybe change to receive index instad of coords

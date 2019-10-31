@@ -1,5 +1,6 @@
 #include "fillit.h"
 #include <stdio.h>
+#include <time.h>
 
 void	initial_tetr(t_tetr **tetr)
 {
@@ -30,7 +31,6 @@ void	initial_tetr(t_tetr **tetr)
 	** #### "I-block V"
 	*/
 
-	tetr[1] = (t_tetr*)malloc(sizeof(t_tetr));
 	tetr[1]->tile[0].x = 0;
 	tetr[1]->tile[0].y = 0;
 	tetr[1]->tile[1].x = 1;
@@ -274,7 +274,7 @@ void	initial_tetr(t_tetr **tetr)
 	**  ##	"T-block 90"
 	**	 #
 	*/
-	
+
 	tetr[18]->tile[0].x = 0;
 	tetr[18]->tile[0].y = 0;
 	tetr[18]->tile[1].x = 1;
@@ -287,36 +287,36 @@ void	initial_tetr(t_tetr **tetr)
 
 int main (int ac, char **av)
 {
-	t_tetr	*tetrimino;
+	t_tetr	**tetrimino;
 	t_map	map;
 	int		i;
 	int		size;
 	int		ret;
 	int		rng;
 	int		c;
-
+	int		maxc;
+	
 	if (ac == 3)
 	{
-		if (!(tetrimino = (t_tetr*)malloc(sizeof(t_tetr)*19)))
+		srand(time(0));
+		if (!(tetrimino = (t_tetr**)malloc(sizeof(t_tetr*)*19)))
 			return (-1);
 		size = ft_atoi(av[2]);
+		maxc = ft_atoi(av[1]);
 		init_map(&map, size);
-		initial_tetr(&tetrimino);
-		printf("Map and tetriminos initialized\n");
+		initial_tetr(tetrimino);
 		c = 0;
-		while (c < ft_atoi(av[1]))
+		while (c < maxc)
 		{
 			i = 0;
-			// rng = rand() % 19;
-			rng = 0;
-			tetrimino[rng].name = c + 65;
-			printf("Placing %d: tetrimino no. %d named '%c'\n", c, rng, tetrimino[rng].name);
+			rng = rand() % 19;
+			tetrimino[rng]->name = c + 65;
 			while (i < size * size)
 			{
-				ret = check_space(&map, i, (&tetrimino)[rng]);
+				ret = check_space(&map, i, tetrimino[rng]);
 				if (ret == 0)
 				{
-					tetr_to_map(&map, (&tetrimino)[rng], map.tile[i].loc.x, map.tile[i].loc.y);
+					tetr_to_map(&map, tetrimino[rng], map.tile[i].loc.x, map.tile[i].loc.y);
 					break ;
 				}
 				i = i + 1;
