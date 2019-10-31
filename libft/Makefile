@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 22:49:48 by jnovotny          #+#    #+#              #
-#    Updated: 2019/10/29 16:47:00 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/10/31 12:34:16 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,8 @@ FTS =	ft_atoi.c \
 		ft_tolower.c \
 		ft_toupper.c \
 		ft_realloc.c \
-		get_next_line.c
+		get_next_line.c \
+		ft_min_sqrt.c
 
 FTOS = $(FTS:.c=.o)
 

@@ -2,14 +2,16 @@
 #include <stdio.h>
 #include <time.h>
 
-void	initial_tetr(t_tetr **tetr)
+int	initial_tetr(t_tetr **tetr)
 {
 	int i;
 
 	i = 0;
 	while (i < 19)
 	{
-		tetr[i] = (t_tetr*)malloc(sizeof(t_tetr));
+		if(!(tetr[i] = (t_tetr*)malloc(sizeof(t_tetr))))
+			return (-1);
+		tetr[i]->name = 'x';
 		i = i + 1;
 	}
 
@@ -283,18 +285,22 @@ void	initial_tetr(t_tetr **tetr)
 	tetr[18]->tile[2].y = 0;
 	tetr[18]->tile[3].x = 2;
 	tetr[18]->tile[3].y = 0;
+
+	return (0);
 }
 
 int main (int ac, char **av)
 {
 	t_tetr	**tetrimino;
+	t_tetr	**originals;
 	t_map	map;
 	int		i;
 	int		size;
 	int		ret;
 	int		rng;
-	int		c;
+	int		c, cnt;
 	int		maxc;
+	int		minsize;
 	
 	if (ac == 3)
 	{
@@ -324,6 +330,67 @@ int main (int ac, char **av)
 			c = c + 1;
 		}
 		print_map(&map);
+		free(map.tile);
+	}
+
+	if (ac == 2)
+	{
+		srand(time(0));
+		if (!(originals = (t_tetr**)malloc(sizeof(t_tetr*)*19)))
+			return (-1);
+		maxc = ft_atoi(av[1]);
+		if (!(tetrimino = (t_tetr**)malloc(sizeof(t_tetr*)*maxc)))
+			return (-1);
+		i = 0;
+		while (i < maxc)
+		{
+			if(!(tetrimino[i] = (t_tetr*)malloc(sizeof(t_tetr))))
+				return (-1);
+			i = i + 1;
+		}
+		printf("Allocation done\n");
+		initial_tetr(originals);
+		c = 0;
+		printf("Created tetriminos: ");
+		while (c < maxc)
+		{
+			rng = rand() % 19;
+			copy_tetrimino(tetrimino[c], originals[rng]);
+			tetrimino[c]->name = c + 65;
+			printf("'%c' | ", tetrimino[c]->name);
+			c = c + 1;
+		}
+		printf("\n");
+		minsize = ft_min_sqrt(maxc * 4);
+		printf("Smalles ever possible square for %d tetriminos is %dx%d\n", maxc, minsize, minsize);
+		while (cnt != maxc)
+		{
+			init_map(&map, minsize);
+			cnt = 0;
+			c = 0;
+			while (c < maxc)
+			{
+				i = 0;
+				while (i < minsize * minsize)
+				{
+					ret = check_space(&map, i, tetrimino[c]);
+					if (ret == 0)
+					{
+						tetr_to_map(&map, tetrimino[c], map.tile[i].loc.x, map.tile[i].loc.y);
+						cnt = cnt + 1;
+						break ;
+					}
+					i = i + 1;
+				}
+				c = c + 1;
+			}
+			if (cnt == maxc)
+				break ;
+			free(map.tile);
+			minsize = minsize + 1;
+		}
+		print_map(&map);
+		printf("Fitted on map %dx%d\n", minsize, minsize);
 	}
 	return (0);
 }

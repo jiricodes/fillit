@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tetr_to_map.c                                      :+:      :+:    :+:   */
+/*   copy_tetrimino.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/31 11:55:31 by jnovotny         ###   ########.fr       */
+/*   Created: 2019/10/31 13:58:31 by jnovotny          #+#    #+#             */
+/*   Updated: 2019/10/31 14:32:23 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
-/*
-** Maybe change to receive index instad of coords
-*/
-
-int		tetr_to_map(t_map *map, t_tetr *tetrimino, int x, int y)
+void	copy_tetrimino(t_tetr *t1, t_tetr *t2)
 {
 	int i;
-	int j;
 
-	
-	j = 0;
 	i = 0;
-	while (j < 4)
+	t1->name = t2->name;
+	while (i < 4)
 	{
-		while (!(MX == x + TX && MY == y + TY))
-			i = i + 1;
-		MV = TN;
-		j = j + 1;
+		t1->tile[i].x = t2->tile[i].x;
+		t1->tile[i].y = t2->tile[i].y;
+		i = i + 1;
 	}
-	return (0);
 }

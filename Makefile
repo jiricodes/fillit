@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/23 10:28:32 by jnovotny          #+#    #+#              #
-#    Updated: 2019/10/30 19:02:37 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/10/31 14:09:48 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ FTS =	initialize_map.c \
 		tetr_to_map.c \
 		print_map.c \
 		solve.c \
+		copy_tetrimino.c \
 		test.c
 GFT = tetrimino_generator.c
 TFILE =	testext1 \

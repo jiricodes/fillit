@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tetr_to_map.c                                      :+:      :+:    :+:   */
+/*   ft_min_sqrt.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/31 11:55:31 by jnovotny         ###   ########.fr       */
+/*   Created: 2019/10/31 12:12:18 by jnovotny          #+#    #+#             */
+/*   Updated: 2019/10/31 12:48:54 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <stdio.h>
+#include "libft.h"
 
 /*
-** Maybe change to receive index instad of coords
+** Returns the minimum int square root x of given nb where x * x >= nb.
 */
 
-int		tetr_to_map(t_map *map, t_tetr *tetrimino, int x, int y)
+int	ft_min_sqrt(int nb)
 {
 	int i;
-	int j;
 
-	
-	j = 0;
-	i = 0;
-	while (j < 4)
+	if (nb == 0 || nb == 1)
+		return (nb);
+	if (nb > 1)
 	{
-		while (!(MX == x + TX && MY == y + TY))
+		i = 1;
+		while (i < nb / 2)
+		{
+			if (i * i >= nb)
+				return (i);
 			i = i + 1;
-		MV = TN;
-		j = j + 1;
+		}
 	}
 	return (0);
 }
