@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/01 12:58:04 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/01 17:10:15 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct	s_tetrimino
 	char		name;
 	t_coords	tile[4];
 	int			placed;
+	int			spec;
 }				t_tetr;
 
 /*
@@ -80,7 +81,7 @@ typedef struct	s_map
 int		init_map(t_map *map, int size);
 int		tetr_to_map(t_map *map, t_tetr *tetrimino, int x, int y);
 void	print_map(t_map *map);
-int		check_space(t_map *map, int org, t_tetr *tetrimino);
+int		check_space(t_map *map, int org, t_tetr *tetrimino, int skip);
 int		place_tetriminos(t_map *map, t_tetr **tetrimino, int count);
 
 /*

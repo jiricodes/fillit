@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 13:58:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/01 12:57:21 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/01 15:54:49 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_tetrimino(t_tetr *tetrimino)
 	init_map(&map, 4);
 	while (i < 16)
 	{
-		ret = check_space(&map, i, tetrimino);
+		ret = check_space(&map, i, tetrimino, 1);
 		if (0 == ret)
 		{
 			tetr_to_map(&map, tetrimino, map.tile[i].loc.x, map.tile[i].loc.y);

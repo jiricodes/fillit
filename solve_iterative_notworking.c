@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:53:35 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/01 17:51:04 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/01 17:33:03 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_space(t_map *map, int org, t_tetr *tetrimino, int skip)
 			return (-1);
 		j = j + 1;
 	}
-	// if (skip == 0 && check_tetrimino(tetrimino, map, org) == -1)
-	// 		return (-2);
+	if (skip == 0 && check_tetrimino(tetrimino, map, org) == -1)
+			return (-2);
 	return (0);
 }
