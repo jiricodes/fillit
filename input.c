@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/01 14:47:58 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/01 14:53:35 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int		check_neighbour(char *buf)
 	{
 		while (buf[x] != '#' && buf[x] != '\0')
 			x++;
-		printf("The tile position is: %d | \"%c\"\nneighbour count is: %d\n", x, buf[x], n_cnt);
 		if (buf[x] == '#' && buf[x + 1] == '#')
 			n_cnt++;
 		if (buf[x] == '#' && buf[x + 5] == '#')
@@ -57,12 +56,12 @@ int		check_neighbour(char *buf)
 			n_cnt++;
 		x++;
 	}
+	printf("Final count is: %d\n", n_cnt);
 	if (n_cnt != 6)
 	{
 		printf("Wrong count: %d\n", n_cnt);
 		return (-1);
 	}
-
 	else
 		return (1);
 }
