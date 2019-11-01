@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/31 14:09:20 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/01 10:23:25 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int		init_map(t_map *map, int size);
 int		tetr_to_map(t_map *map, t_tetr *tetrimino, int x, int y);
 void	print_map(t_map *map);
 int		check_space(t_map *map, int org, t_tetr *tetrimino);
+int		place_tetriminos(t_map *map, t_tetr **tetrimino, int count);
 
 /*
 ** Tetrimino functions

@@ -366,31 +366,14 @@ int main (int ac, char **av)
 		while (cnt != maxc)
 		{
 			init_map(&map, minsize);
-			cnt = 0;
 			c = 0;
-			while (c < maxc)
-			{
-				i = 0;
-				while (i < minsize * minsize)
-				{
-					ret = check_space(&map, i, tetrimino[c]);
-					if (ret == 0)
-					{
-						tetr_to_map(&map, tetrimino[c], map.tile[i].loc.x, map.tile[i].loc.y);
-						cnt = cnt + 1;
-						break ;
-					}
-					i = i + 1;
-				}
-				c = c + 1;
-			}
-			if (cnt == maxc)
-				break ;
-			free(map.tile);
+			cnt = place_tetriminos(&map, tetrimino, maxc);
+			if (cnt != maxc)
+				free(map.tile);
 			minsize = minsize + 1;
 		}
 		print_map(&map);
-		printf("Fitted on map %dx%d\n", minsize, minsize);
+		printf("Fitted on map %dx%d\n", map.size, map.size);
 	}
 	return (0);
 }

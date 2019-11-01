@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:53:35 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/31 11:13:43 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/01 10:03:45 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	check_space(t_map *map, int org, t_tetr *tetrimino)
 			if (i >= MS * MS)
 				return (-3);
 		}
-		if ((MX + TX) < 0 || (MX + TX) > MS || (MY + TY) < 0 || (MY + TY) > MS)
-			return (-2);
 		if (MV != '.')
 			return (-1);
 		j = j + 1;
