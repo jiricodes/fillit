@@ -12,6 +12,7 @@ int	initial_tetr(t_tetr **tetr)
 		if(!(tetr[i] = (t_tetr*)malloc(sizeof(t_tetr))))
 			return (-1);
 		tetr[i]->name = 'x';
+		tetr[i]->placed = 0;
 		i = i + 1;
 	}
 
@@ -351,25 +352,32 @@ int main (int ac, char **av)
 		printf("Allocation done\n");
 		initial_tetr(originals);
 		c = 0;
-		printf("Created tetriminos: ");
+		printf("Created tetriminos:\n");
 		while (c < maxc)
 		{
 			rng = rand() % 19;
 			copy_tetrimino(tetrimino[c], originals[rng]);
 			tetrimino[c]->name = c + 65;
-			printf("'%c' | ", tetrimino[c]->name);
+			printf("\033[1;31m'%c'\033[0m\n", tetrimino[c]->name);
+			print_tetrimino(tetrimino[c]);
+			printf("\n");
+			tetrimino[c]->placed = 0;
 			c = c + 1;
 		}
 		printf("\n");
 		minsize = ft_min_sqrt(maxc * 4);
 		printf("Smalles ever possible square for %d tetriminos is %dx%d\n", maxc, minsize, minsize);
-		while (cnt != maxc)
+		while (cnt != maxc && minsize < 27)
 		{
 			init_map(&map, minsize);
-			c = 0;
+			printf ("Testing map %dx%d.\n", map.size, map.size);
 			cnt = place_tetriminos(&map, tetrimino, maxc);
+			printf("Placed %d out of %d\n", cnt, maxc);
 			if (cnt != maxc)
+			{
 				free(map.tile);
+				reset_tetriminos(tetrimino, maxc);
+			}
 			minsize = minsize + 1;
 		}
 		print_map(&map);

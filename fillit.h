@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/01 10:23:25 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/01 12:58:04 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,13 @@
 */
 
 # define MS map->size
+# define MT map->tile
 # define MV map->tile[i].value
 # define MX map->tile[i].loc.x
 # define MY map->tile[i].loc.y
 # define TN tetrimino->name
+# define TT tetrimino->tile
+# define TP tetrimino->placed
 # define TX tetrimino->tile[j].x
 # define TY tetrimino->tile[j].y
 
@@ -56,6 +59,7 @@ typedef struct	s_tetrimino
 {
 	char		name;
 	t_coords	tile[4];
+	int			placed;
 }				t_tetr;
 
 /*
@@ -84,5 +88,8 @@ int		place_tetriminos(t_map *map, t_tetr **tetrimino, int count);
 */
 
 void	copy_tetrimino(t_tetr *t1, t_tetr *t2);
+int		check_tetrimino(t_tetr *tetrimino, t_map *map, int i);
+void	print_tetrimino(t_tetr *tetrimino);
+void	reset_tetriminos(t_tetr **tetrimino, int count);
 
 #endif
