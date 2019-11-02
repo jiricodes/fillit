@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/01 17:10:15 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/02 21:40:36 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,12 @@ typedef struct	s_map
 }				t_map;
 
 
+typedef struct	s_bmap
+{
+	int	size;
+	int	*lines;
+}				t_bmap;
+
 /*
 **	Map functions
 */
@@ -92,5 +98,13 @@ void	copy_tetrimino(t_tetr *t1, t_tetr *t2);
 int		check_tetrimino(t_tetr *tetrimino, t_map *map, int i);
 void	print_tetrimino(t_tetr *tetrimino);
 void	reset_tetriminos(t_tetr **tetrimino, int count);
+
+/*
+** BIT operations functions
+*/
+
+int is_bit_set(int x, int i);
+int set_bit(int x, int i);
+int clear_bit(int x, int i);
 
 #endif
