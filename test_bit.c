@@ -377,7 +377,7 @@ int main (int ac, char **av)
 			printf("\n\n");
 			c = c + 1;
 		}
-		printf("\nSolution\n");
+		printf("\nSolution (%dx%d)\n", size, size);
 		print_map(&map_res);
 		printf("\n-------------------------\n");
 		// printf("\n");
@@ -397,6 +397,7 @@ int main (int ac, char **av)
 		// printf("Rule 1 score:\t%d\n",r2);
 		// printf("Rule 3 score:\t%d\n",r3);
 		// printf("Total:\t\t%d\n",r1+r2+r3);
+		// while (1) {};
 	}
 	return (0);
 }

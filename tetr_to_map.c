@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/03 18:10:20 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/03 18:40:50 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,3 +156,4 @@ int		place_tetr_bmap(t_bmap *map, t_tetr *tetrimino)
 	}
 	return(besti); /*if besti == MS*MS then the tetrimino cannot be placed! */
 }
+
