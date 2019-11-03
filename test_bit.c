@@ -315,6 +315,8 @@ int main (int ac, char **av)
 
 	if (ac == 2 && maxc > 0)
 	{
+		if (maxc > 52)
+			return(-1);
 		srand(time(0));
 		if (!(originals = (t_tetr**)malloc(sizeof(t_tetr*)*19)))
 			return (-1);
@@ -335,7 +337,10 @@ int main (int ac, char **av)
 		{
 			rng = rand() % 19;
 			copy_tetrimino(tetrimino[c], originals[rng]);
-			tetrimino[c]->name = c + 65;
+			if (c < 26)
+				tetrimino[c]->name = c + 65;
+			else if (c < 52)
+				tetrimino[c]->name = c + 72;
 			printf("\033[1;31m'%c'\033[0m\n", tetrimino[c]->name);
 			print_tetrimino_bmap(tetrimino[c]);
 			printf("\n");
@@ -346,6 +351,7 @@ int main (int ac, char **av)
 		size = ft_min_sqrt(maxc * 4) + 2;
 		printf("Smalles ever possible square for %d tetriminos is %dx%d\n", maxc, size, size);
 		init_bmap(&map, size);
+		init_map(&map_res, size);
 		printf("\n");
 		c = 0;
 		while (c < maxc)
@@ -359,9 +365,13 @@ int main (int ac, char **av)
 			}
 			/*place it here to t_map*/
 			tetr_to_bmap(&map, tetrimino[c], i);
+			tetr_to_map(&map_res, tetrimino[c], map_res.tile[i].loc.x, map_res.tile[i].loc.y);
 			print_bmap(&map);
 			c = c + 1;
 		}
+		printf("\nSolution\n");
+		print_map(&map_res);
+		printf("\n-------------------------\n");
 		// printf("\n");
 		// map.lines[0] = 3;
 		// map.lines[1] = 43;
