@@ -343,10 +343,25 @@ int main (int ac, char **av)
 			c = c + 1;
 		}
 		printf("\n");
-		size = ft_min_sqrt(maxc * 4);
+		size = ft_min_sqrt(maxc * 4) + 2;
 		printf("Smalles ever possible square for %d tetriminos is %dx%d\n", maxc, size, size);
 		init_bmap(&map, size);
-		print_bmap(&map);
+		printf("\n");
+		c = 0;
+		while (c < maxc)
+		{
+			printf("Sending shit %d\n", c);
+			i = place_tetr_bmap(&map, tetrimino[c]);
+			if (i >= map.size * map.size)
+			{
+				printf("\033[1;31mFailed to place tetrimino no. %d\033[0m\n", c);
+				break ;
+			}
+			/*place it here to t_map*/
+			tetr_to_bmap(&map, tetrimino[c], i);
+			print_bmap(&map);
+			c = c + 1;
+		}
 		// printf("\n");
 		// map.lines[0] = 3;
 		// map.lines[1] = 43;
