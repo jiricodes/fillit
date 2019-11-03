@@ -298,37 +298,72 @@ int main (int ac, char **av)
 	int r1;
 	int r2;
 	int r3;
+	t_tetr	**tetrimino;
+	t_tetr	**originals;
+	t_map	map_res;
+	int		ret;
+	int		rng;
+	int		c;
+	int		maxc;
 
-	size = ft_atoi(av[1]);
-
-	if (ac == 2 && size > 0)
+	if (ac != 2)
 	{
-		init_bmap(&map, size);
-		i = 0;
-		while (i < size)
-		{
-			printf("Line[%d] = %d\n", i, map.lines[i]);
-			i = i + 1;
-		}
-		map.lines[0] = 3;
-		map.lines[1] = 43;
-		map.lines[2] = 27;
-		map.lines[3] = 11;
-		map.lines[4] = 111;
+		printf("\033[1;31mWrong amount of arguments. Please select only one positive numerical value as an argument.\033[0m\n");
+	}
 
+	maxc = ft_atoi(av[1]);
+
+	if (ac == 2 && maxc > 0)
+	{
+		srand(time(0));
+		if (!(originals = (t_tetr**)malloc(sizeof(t_tetr*)*19)))
+			return (-1);
+		if (!(tetrimino = (t_tetr**)malloc(sizeof(t_tetr*)*maxc)))
+			return (-1);
 		i = 0;
-		while (i < size)
+		while (i < maxc)
 		{
-			printf("Line[%d] = %d\n", i, map.lines[i]);
+			if(!(tetrimino[i] = (t_tetr*)malloc(sizeof(t_tetr))))
+				return (-1);
 			i = i + 1;
 		}
-		r1 = rule_one(&map);
-		r2 = rule_two(&map);
-		r3 = rule_three(&map);
-		printf("Rule 1 score:\t%d\n",r1);
-		printf("Rule 1 score:\t%d\n",r2);
-		printf("Rule 3 score:\t%d\n",r3);
-		printf("Total:\t\t%d\n",r1+r2+r3);
+		printf("Allocation done\n");
+		initial_tetr(originals);
+		c = 0;
+		printf("Created tetriminos:\n");
+		while (c < maxc)
+		{
+			rng = rand() % 19;
+			copy_tetrimino(tetrimino[c], originals[rng]);
+			tetrimino[c]->name = c + 65;
+			printf("\033[1;31m'%c'\033[0m\n", tetrimino[c]->name);
+			print_tetrimino_bmap(tetrimino[c]);
+			printf("\n");
+			tetrimino[c]->placed = 0;
+			c = c + 1;
+		}
+		printf("\n");
+		size = ft_min_sqrt(maxc * 4);
+		printf("Smalles ever possible square for %d tetriminos is %dx%d\n", maxc, size, size);
+		init_bmap(&map, size);
+		print_bmap(&map);
+		// printf("\n");
+		// map.lines[0] = 3;
+		// map.lines[1] = 43;
+		// map.lines[2] = 27;
+		// map.lines[3] = 11;
+		// map.lines[4] = 111;
+
+		// printf("\n");
+		// print_bmap(&map);
+		// printf("\n");
+		// r1 = rule_one(&map);
+		// r2 = rule_two(&map);
+		// r3 = rule_three(&map);
+		// printf("Rule 1 score:\t%d\n",r1);
+		// printf("Rule 1 score:\t%d\n",r2);
+		// printf("Rule 3 score:\t%d\n",r3);
+		// printf("Total:\t\t%d\n",r1+r2+r3);
 	}
 	return (0);
 }

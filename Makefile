@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/23 10:28:32 by jnovotny          #+#    #+#              #
-#    Updated: 2019/11/02 22:20:10 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/11/03 13:06:11 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,10 @@ CFLAGS = -Wall -Werror -Wextra
 FTS =	initialize_map.c \
 		bit_fts_basic.c \
 		score_rules.c \
+		print_map.c \
+		copy_tetrimino.c \
+		solve.c \
+		 tetr_to_map.c \
 		test_bit.c
 GFT = tetrimino_generator.c
 TFILE =	testext1 \

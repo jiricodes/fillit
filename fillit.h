@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/02 22:45:29 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/03 13:28:12 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft/libft.h"
 # include "libft/get_next_line.h"
+# include <stdio.h>
 
 /*
 **	Helpful definitions
@@ -87,7 +88,6 @@ typedef struct	s_bmap
 int		init_map(t_map *map, int size);
 int		tetr_to_map(t_map *map, t_tetr *tetrimino, int x, int y);
 void	print_map(t_map *map);
-int		check_space(t_map *map, int org, t_tetr *tetrimino, int skip);
 int		place_tetriminos(t_map *map, t_tetr **tetrimino, int count);
 
 /*
@@ -98,6 +98,9 @@ int		init_bmap(t_bmap *map, int size);
 int		rule_one(t_bmap *map);
 int		rule_two(t_bmap *map);
 int		rule_three(t_bmap *map);
+void	print_bmap(t_bmap *map);
+int		check_space(t_bmap *map, int org, t_tetr *tetrimino);
+int 	tetr_to_bmap(t_bmap *map, t_tetr *tetrimino, int position);
 
 /*
 ** Tetrimino functions
@@ -106,6 +109,7 @@ int		rule_three(t_bmap *map);
 void	copy_tetrimino(t_tetr *t1, t_tetr *t2);
 int		check_tetrimino(t_tetr *tetrimino, t_map *map, int i);
 void	print_tetrimino(t_tetr *tetrimino);
+void	print_tetrimino_bmap(t_tetr *tetrimino);
 void	reset_tetriminos(t_tetr **tetrimino, int count);
 
 /*
