@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 13:58:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/03 13:47:56 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/03 17:32:39 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	print_tetrimino_bmap(t_tetr *tetrimino)
 	while (i < 16)
 	{
 		ret = check_space(&map, i, tetrimino);
-		printf("Check i = %d | %d |\n", i, ret);
 		if (ret)
 		{
 			tetr_to_bmap(&map, tetrimino, i);

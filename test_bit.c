@@ -348,7 +348,7 @@ int main (int ac, char **av)
 			c = c + 1;
 		}
 		printf("\n");
-		size = ft_min_sqrt(maxc * 4) + 2;
+		size = ft_min_sqrt(maxc * 4);
 		printf("Smalles ever possible square for %d tetriminos is %dx%d\n", maxc, size, size);
 		init_bmap(&map, size);
 		init_map(&map_res, size);
@@ -356,17 +356,25 @@ int main (int ac, char **av)
 		c = 0;
 		while (c < maxc)
 		{
-			printf("Sending shit %d\n", c);
 			i = place_tetr_bmap(&map, tetrimino[c]);
-			if (i >= map.size * map.size)
+			if (i == -1)
 			{
 				printf("\033[1;31mFailed to place tetrimino no. %d\033[0m\n", c);
-				break ;
+				size = size + 1;
+				del_bmap(&map);
+				init_bmap(&map, size);
+				free(map_res.tile);
+				init_map(&map_res, size);
+				reset_tetriminos(tetrimino, maxc);
+				c = 0;
+				printf ("Reseted all and resized map to size = %d\n", size);
+				continue ;
 			}
-			/*place it here to t_map*/
+			printf("Placing '%c' at %d[%d,%d]\n", tetrimino[c]->name, i, map_res.tile[i].loc.x,  map_res.tile[i].loc.y);
 			tetr_to_bmap(&map, tetrimino[c], i);
 			tetr_to_map(&map_res, tetrimino[c], map_res.tile[i].loc.x, map_res.tile[i].loc.y);
 			print_bmap(&map);
+			printf("\n\n");
 			c = c + 1;
 		}
 		printf("\nSolution\n");

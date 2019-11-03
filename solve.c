@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:53:35 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/03 17:04:35 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/03 18:05:40 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,14 @@ int	check_space(t_bmap *map, int org, t_tetr *tetrimino)
 	i = org / MS;
 	k = org % MS;
 	j = 0;
+	// if (!is_bit_set(map->lines[i], k))
+	// 		return (0);
+	printf("org = %d, ms = %d | i = %d | k = %d | ",org, MS, i, k);
 	while (j < 4)
 	{
 		if (i + TX >= MS || k + TY >= MS || k + TY < 0)
 			return (0);
-		if (!(is_bit_set(map->lines[i + TX], k + TY)))
+		if (!is_bit_set(map->lines[i + TX], k + TY))
 			return (0);
 		j = j + 1;
 	}

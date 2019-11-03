@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/03 17:15:42 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/03 18:10:20 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,17 +130,16 @@ int		place_tetr_bmap(t_bmap *map, t_tetr *tetrimino)
 
 	i = 0;
 	best = 0;
+	besti = -1;
 	while (i < MS * MS)
 	{
-		printf("i = %d | ",i);
 		ret = check_space(map, i,tetrimino);
-		printf("ret = %D\n", ret);
-		if (ret)
+		printf("ret = %d\n", ret);
+		if (ret == 1)
 		{
 			init_bmap(&res, map->size);
 			copy_bmap(&res, map);
 			tetr_to_bmap(&res, tetrimino, i);
-			printf("Evaluating %d\n", i);
 			if (best == 0)
 			{
 				best = map_score(&res);
@@ -151,9 +150,6 @@ int		place_tetr_bmap(t_bmap *map, t_tetr *tetrimino)
 				best = map_score(&res);
 				besti = i;
 			}
-			printf("Best (%d) @ %d\n", best, besti);
-			print_bmap(&res);
-			printf("\n");
 			del_bmap(&res);
 		}
 		i = i + 1;
