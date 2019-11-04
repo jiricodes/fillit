@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/04 17:42:31 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:13:43 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int		check_input(char *buf)
 	}
 	if (lncnt != 4)
 		return (-1);
-	if (len == 21 && buf[len - 1] != '\n')
+	if (buf[len - 1] != '\n')
 		return (-1);
 	if (check_neighbour(buf) != 1)
 		return (-1);
