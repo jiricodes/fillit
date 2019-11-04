@@ -6,12 +6,17 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 13:58:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/03 17:32:39 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:54:38 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
+
+
+/*
+** Copies tetrimino t2 to t1. Currently not in use.
+*/
 
 void	copy_tetrimino(t_tetr *t1, t_tetr *t2)
 {
@@ -27,6 +32,10 @@ void	copy_tetrimino(t_tetr *t1, t_tetr *t2)
 		i = i + 1;
 	}
 }
+
+/*
+** Places given tetrimino on 4x4 map and sends it to the print function
+*/
 
 void	print_tetrimino_bmap(t_tetr *tetrimino)
 {
@@ -50,27 +59,9 @@ void	print_tetrimino_bmap(t_tetr *tetrimino)
 	free(map.lines);
 }
 
-// void	print_tetrimino(t_tetr *tetrimino)
-// {
-// 	t_map	map;
-// 	int		i;
-// 	int 	ret;
-
-// 	i = 0;
-// 	init_map(&map, 4);
-// 	while (i < 16)
-// 	{
-// 		ret = check_space(&map, i, tetrimino, 1);
-// 		if (0 == ret)
-// 		{
-// 			tetr_to_map(&map, tetrimino, map.tile[i].loc.x, map.tile[i].loc.y);
-// 			break;
-// 		}
-// 		i = i + 1;
-// 	}
-// 	print_map(&map);
-// 	free(map.tile);
-// }
+/*
+** Resets tetriminos' placement value
+*/
 
 void	reset_tetriminos(t_tetr **tetrimino, int count)
 {

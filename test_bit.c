@@ -61,7 +61,7 @@ int main (int ac, char **av)
 		printf("\nSolution (%dx%d)\n", size, size);
 		print_map(&map_res);
 		printf("\n-------------------------\n");
-		// while (1) {};
+		while (1) {};
 	}
 	return (0);
 }

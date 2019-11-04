@@ -6,11 +6,15 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 22:06:41 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/03 19:52:09 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/04 15:03:39 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Rule 1: Applies to an empty cell right of column with the empty block on the same or lower level
+*/
 
 int rule_one(t_bmap *map)
 {
@@ -34,6 +38,9 @@ int rule_one(t_bmap *map)
 	return (res);
 }
 
+/*
+** Rule 2: Applies to an empty cell above the bottom most filled cell in the same column
+*/
 
 int rule_two(t_bmap *map)
 {
@@ -65,6 +72,10 @@ int rule_two(t_bmap *map)
 	}
 	return (res);
 }
+
+/*
+**	Rule 3: Applies to an empty cell left of column with the empty block on the same or lower level
+*/
 
 int rule_three(t_bmap *map)
 {

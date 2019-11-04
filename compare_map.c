@@ -6,13 +6,14 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 17:37:06 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/03 14:41:44 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:52:24 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
 /*
-**	Selects and returns the better of two maps
+**	Returns "Map Score" based on given rules.
 */
 
 int	map_score(t_bmap *map)

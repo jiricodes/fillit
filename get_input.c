@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/04 14:26:16 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/04 16:27:41 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,24 +79,28 @@ static int		check_input(char *buf)
 **	Format the input
 */
 
-static char		*strip_tetro(char *buf)
+void strip_tetro(char **buf)
 {
 	int	len;
 	int ln_cnt;
 	int x;
+	char *temp;
 
-	len = ft_strlen(buf);
+	len = ft_strlen(*buf);
 	ln_cnt = 0;
 	x = 0;
-	while (buf[x] != '\0')
+	while ((*buf)[x] != '\0')
 	{
-		if (buf[x] == '\n')
+		if ((*buf)[x] == '\n')
 			ln_cnt++;
 		x++;
 	}
 	if (ln_cnt == 5)
-		return (ft_strsub(buf, 0, len - 1));
-	return (buf);
+	{
+		temp = ft_strsub(*buf, 0, len - 1);
+		free(*buf);
+		*buf = temp;
+	}
 }
 
 /*
@@ -114,11 +118,11 @@ t_tetr			**get_input(char *argv, int *cnt) /*add pointer to maxc int then assign
 	tetros = (t_tetr **)malloc(26 * sizeof(t_tetr *) + 1);
 	tetr_cnt = 0;
 	buf = (char *)malloc(22 * sizeof(char));
-	fd = open(argv, O_RDONLY);
-	while ((ret = read(fd, buf, 21)) > 0)
+	fd = open(argv, O_RDONLY); /* protect from fd = - 1 */
+	while ((ret = read(fd, buf, 21)) > 0) /*protect from ret = -1*/
 	{
 		buf[ret] = '\0';
-		buf = strip_tetro(buf);
+		strip_tetro(&buf);
 		if ((check_input(buf)) != 1)
 			return (0);
 		else

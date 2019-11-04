@@ -6,11 +6,15 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:57:45 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/03 15:58:26 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:57:48 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Initializes empty t_map of given size.
+*/
 
 int	init_map(t_map *map, int size)
 {
@@ -29,6 +33,10 @@ int	init_map(t_map *map, int size)
 	}
 	return (0);
 }
+
+/*
+** Initializes empty t_bmap (BitMap) of given size.
+*/
 
 int init_bmap(t_bmap *map, int size)
 {
@@ -53,6 +61,10 @@ int init_bmap(t_bmap *map, int size)
 	return (0);
 }
 
+/*
+** Copies line values from source BitMap to destination BitMap.
+*/
+
 int	copy_bmap(t_bmap *dst, t_bmap *src)
 {
 	int		i;
@@ -69,6 +81,10 @@ int	copy_bmap(t_bmap *dst, t_bmap *src)
 	}
 	return (0);
 }
+
+/*
+** Map cleanse
+*/
 
 void del_bmap(t_bmap *map)
 {

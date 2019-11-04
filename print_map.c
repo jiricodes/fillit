@@ -6,11 +6,15 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:02:26 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/03 14:23:38 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/04 15:00:32 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Standard result map and BitMap printing functions.
+*/
 
 void	print_map(t_map *map)
 {
