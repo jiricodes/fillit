@@ -1,0 +1,46 @@
+Prediction + 2
+
+Placing 'V' at 68[6,2]
+.#.#...#.#.
+###########
+###.#######
+####.######
+..#########
+###########
+.##########
+.##.#######
+..#..#####.
+.....####..
+.....####..
+
+Solution (12x12)
+.A.B..DDDCE.
+AAABBBDFCCEE
+.IIIGG.FC.EH
+JJI..GGFFKKH
+JMM..LLLKKNH
+JMMPPLR.O.NH
+.QPPRRROOON.
+.QQQUUUU.WNV
+.SSSSTTTWWVV
+.ZZXXXTYYW.V
+.Z...XYY....
+.Z..........
+
+-------------------------
+./test tetrimino_testfile_26  49.77s user 0.01s system 99% cpu 49.798 total
+
+Prediction +3
+
+Placing 'V' at 96[8,8]
+.#.#...#.#.
+###########
+###.###.###
+#######.###
+###########
+#######.###
+#######.###
+#######.###
+####....##.
+####...##..
+........#..

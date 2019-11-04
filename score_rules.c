@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 22:06:41 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/04 17:16:38 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:43:41 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int rule_one(t_bmap *map)
 		while (j < map->size)
 		{
 			if ((j > 0) && is_bit_set(map->lines[i], j) &&  (!is_bit_set(map->lines[i], j - 1)))
-				res = res + (i * i);
+				res = res + ((MS - i) * (MS - i));
 			j = j + 1;
 		}
 		i = i + 1;
@@ -61,7 +61,7 @@ int rule_two(t_bmap *map)
 			{
 				if (is_bit_set(map->lines[i], j) && (!is_bit_set(map->lines[i + k], j)))
 				{
-					res = res + ((i+1) * (i+1) * (i+1));
+					res = res + ((MS - i) * (MS - i) * (MS - i));
 					break ; 
 				}
 				k = k + 1;
@@ -91,7 +91,7 @@ int rule_three(t_bmap *map)
 		while (j < map->size - 1)
 		{
 			if (is_bit_set(map->lines[i], j) &&  (!is_bit_set(map->lines[i], j + 1)))
-				res = res + (i * i);
+				res = res + ((MS - i + 1) * (MS - i + 1));
 			j = j + 1;
 		}
 		i = i + 1;

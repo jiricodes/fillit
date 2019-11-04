@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/04 16:45:24 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:40:59 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino, int ti, int org) /* sendin
 			init_bmap(&res, map->size);
 			copy_bmap(&res, map);
 			tetr_to_bmap(&res, tetrimino[ti], i);
-			if (tetrimino[ti + 1] != NULL && ti + 1 < org + 3)
+			if (tetrimino[ti + 1] != NULL && ti + 1 < org + 4)
 			{
 				ret = place_tetr_bmap(&res, tetrimino, ti + 1, org);
 				if (ret == - 1)
