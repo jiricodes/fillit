@@ -6,11 +6,12 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 13:58:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/01 15:54:49 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/03 17:32:39 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 void	copy_tetrimino(t_tetr *t1, t_tetr *t2)
 {
@@ -27,27 +28,49 @@ void	copy_tetrimino(t_tetr *t1, t_tetr *t2)
 	}
 }
 
-void	print_tetrimino(t_tetr *tetrimino)
+void	print_tetrimino_bmap(t_tetr *tetrimino)
 {
-	t_map	map;
+	t_bmap	map;
 	int		i;
-	int 	ret;
+	int ret;
 
 	i = 0;
-	init_map(&map, 4);
+	init_bmap(&map, 4);
 	while (i < 16)
 	{
-		ret = check_space(&map, i, tetrimino, 1);
-		if (0 == ret)
+		ret = check_space(&map, i, tetrimino);
+		if (ret)
 		{
-			tetr_to_map(&map, tetrimino, map.tile[i].loc.x, map.tile[i].loc.y);
+			tetr_to_bmap(&map, tetrimino, i);
 			break;
 		}
 		i = i + 1;
 	}
-	print_map(&map);
-	free(map.tile);
+	print_bmap(&map);
+	free(map.lines);
 }
+
+// void	print_tetrimino(t_tetr *tetrimino)
+// {
+// 	t_map	map;
+// 	int		i;
+// 	int 	ret;
+
+// 	i = 0;
+// 	init_map(&map, 4);
+// 	while (i < 16)
+// 	{
+// 		ret = check_space(&map, i, tetrimino, 1);
+// 		if (0 == ret)
+// 		{
+// 			tetr_to_map(&map, tetrimino, map.tile[i].loc.x, map.tile[i].loc.y);
+// 			break;
+// 		}
+// 		i = i + 1;
+// 	}
+// 	print_map(&map);
+// 	free(map.tile);
+// }
 
 void	reset_tetriminos(t_tetr **tetrimino, int count)
 {

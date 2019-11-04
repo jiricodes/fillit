@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
+#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/23 10:28:32 by jnovotny          #+#    #+#              #
-#    Updated: 2019/10/31 14:09:48 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/11/04 13:05:22 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,16 @@ GEN = tetrogen
 LIB = ./libft/libft.a
 CFLAGS = -Wall -Werror -Wextra
 FTS =	initialize_map.c \
-		tetr_to_map.c \
+		bit_fts_basic.c \
+		score_rules.c \
 		print_map.c \
-		solve.c \
 		copy_tetrimino.c \
-		test.c
+		solve.c \
+		tetr_to_map.c \
+		compare_map.c \
+		get_input.c \
+		store_input.c \
+		test_bit.c
 GFT = tetrimino_generator.c
 TFILE =	testext1 \
 		testext2 \

@@ -1,39 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input.c                                            :+:      :+:    :+:   */
+/*   get_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/01 14:53:35 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/04 11:28:55 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
-
-int		get_coords(char *buf, t_tetr **tetr)
-{
-	int x;
-	int y;
-	int tile_cnt;
-	int i;
-
-	i = 0;
-	while (i < 19)
-	{
-		tetr[i] = (t_tetr*)malloc(sizeof(t_tetr));
-		i = i + 1;
-	}
-
-	x = 0;
-	tile_cnt = 0;
-	while (tile_cnt <= 4)
-	{
-		
-	}
-}
 
 int		check_neighbour(char *buf)
 {
@@ -119,31 +97,34 @@ char	*strip_tetro(char *buf)
 
 int		get_input(char **argv)
 {
-	t_tetr	**tetrimino;
 	char	*buf;
 	int		fd;
 	int		ret;
-	int		x;
+	int		tetr_cnt;
+	t_tetr	**tetros;
 
-	if (!(tetrimino = (t_tetr**)malloc(sizeof(t_tetr*)*19)))
-		return (-1);
-	x = 0;
+	tetros = (t_tetr **)malloc(26 * sizeof(t_tetr *));
+	tetr_cnt = 0;
 	buf = (char *)malloc(22 * sizeof(char));
 	fd = open(argv[1], O_RDONLY);
 	while ((ret = read(fd, buf, 21)) > 0)
 	{
 		buf[ret] = '\0';
-		printf("Original Tetromino %d is:\n%s", x, buf);
+		printf("Original Tetromino %d is:\n%s", tetr_cnt, buf);
 		buf = strip_tetro(buf);
-		printf("Stripped Tetromino %d is:\n%s", x, buf);
+		printf("Stripped Tetromino %d is:\n%s", tetr_cnt, buf);
 		if ((check_input(buf)) != 1)
 		{
 			printf("Input is shit\n");
 			return (-1);
 		}
-		// else
-		// 	get_coords(buf, tetrimino);
-		x++;
+		else
+		{
+			store_input(buf, tetr_cnt, tetros);
+		}
+
+		tetr_cnt++;
 	}
+	free(buf);
 	return (1);
 }

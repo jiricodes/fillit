@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:12:18 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/31 12:48:54 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/03 13:16:58 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	ft_min_sqrt(int nb)
 	if (nb > 1)
 	{
 		i = 1;
-		while (i < nb / 2)
+		while (i < nb)
 		{
-			if (i * i >= nb)
+			if ((i * i) >= nb)
 				return (i);
 			i = i + 1;
 		}

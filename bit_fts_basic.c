@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compare_map.c                                      :+:      :+:    :+:   */
+/*   bit_fts_basic.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/01 17:37:06 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/03 14:41:44 by jnovotny         ###   ########.fr       */
+/*   Created: 2019/11/02 21:37:50 by jnovotny          #+#    #+#             */
+/*   Updated: 2019/11/02 21:40:55 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-/*
-**	Selects and returns the better of two maps
-*/
 
-int	map_score(t_bmap *map)
+int is_bit_set(int x, int i)
 {
-	int res;
+	int mask;
 
-	res = rule_one(map) + rule_two(map) + rule_three(map);
-	return (res);
+	mask = 1 << i;
+	return (mask & x);
+}
+
+int set_bit(int x, int i)
+{
+	int mask;
+
+	mask = 1 << i;
+	return (mask | x);
+}
+
+int clear_bit(int x, int i)
+{
+	int mask;
+
+	mask = 1 << i;
+	return ((~mask) & x);
 }

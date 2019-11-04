@@ -6,17 +6,21 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/04 11:28:55 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:26:16 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
 
-int		check_neighbour(char *buf)
+/*
+**	Count neighbour cells to check total number of tiles
+*/
+
+static int		check_neighbour(char *buf)
 {
-	int 	x;
-	int		n_cnt;
+	int	x;
+	int	n_cnt;
 
 	x = 0;
 	n_cnt = 0;
@@ -34,17 +38,16 @@ int		check_neighbour(char *buf)
 			n_cnt++;
 		x++;
 	}
-	printf("Final count is: %d\n", n_cnt);
 	if (n_cnt != 6)
-	{
-		printf("Wrong count: %d\n", n_cnt);
 		return (-1);
-	}
-	else
-		return (1);
+	return (1);
 }
 
-int		check_input(char *buf)
+/*
+**	Check for width, length and chars
+*/
+
+static int		check_input(char *buf)
 {
 	int		x;
 	int		len;
@@ -70,10 +73,13 @@ int		check_input(char *buf)
 	if (check_neighbour(buf) != 1)
 		return (-1);
 	return (1);
-
 }
 
-char	*strip_tetro(char *buf)
+/*
+**	Format the input
+*/
+
+static char		*strip_tetro(char *buf)
 {
 	int	len;
 	int ln_cnt;
@@ -90,12 +96,14 @@ char	*strip_tetro(char *buf)
 	}
 	if (ln_cnt == 5)
 		return (ft_strsub(buf, 0, len - 1));
-	else
-		return (buf);
-	
+	return (buf);
 }
 
-int		get_input(char **argv)
+/*
+**	Read input from file and transform tetrominoes into coordinates
+*/
+
+t_tetr			**get_input(char *argv, int *cnt) /*add pointer to maxc int then assign tetr_cnt to it before return*/
 {
 	char	*buf;
 	int		fd;
@@ -103,28 +111,22 @@ int		get_input(char **argv)
 	int		tetr_cnt;
 	t_tetr	**tetros;
 
-	tetros = (t_tetr **)malloc(26 * sizeof(t_tetr *));
+	tetros = (t_tetr **)malloc(26 * sizeof(t_tetr *) + 1);
 	tetr_cnt = 0;
 	buf = (char *)malloc(22 * sizeof(char));
-	fd = open(argv[1], O_RDONLY);
+	fd = open(argv, O_RDONLY);
 	while ((ret = read(fd, buf, 21)) > 0)
 	{
 		buf[ret] = '\0';
-		printf("Original Tetromino %d is:\n%s", tetr_cnt, buf);
 		buf = strip_tetro(buf);
-		printf("Stripped Tetromino %d is:\n%s", tetr_cnt, buf);
 		if ((check_input(buf)) != 1)
-		{
-			printf("Input is shit\n");
-			return (-1);
-		}
+			return (0);
 		else
-		{
 			store_input(buf, tetr_cnt, tetros);
-		}
-
 		tetr_cnt++;
 	}
 	free(buf);
-	return (1);
+	tetros[tetr_cnt] = 0;
+	cnt[0] = tetr_cnt;
+	return (tetros);
 }
