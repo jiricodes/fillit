@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
+#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/23 10:28:32 by jnovotny          #+#    #+#              #
-#    Updated: 2019/11/04 13:05:22 by asolopov         ###   ########.fr        #
+#    Updated: 2019/11/04 17:02:06 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,13 +41,15 @@ $(NAME):
 clean:
 	@/bin/rm -f *$(OUT)
 
+rmtf:
+	@/bin/rm -f tetrimino_testfile_*
+	
 fclean: clean
 	@/bin/rm -f $(NAME)
 
 re: fclean all
 
-gentor:
-	@/bin/rm -f tetrimino_testfile_*
+gentor: rmtf
 	gcc -o $(GEN) $(LIB) $(GFT)
 
 # run1: clean

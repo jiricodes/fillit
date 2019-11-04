@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/04 14:22:55 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/04 16:39:09 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int		check_space(t_bmap *map, int org, t_tetr *tetrimino);
 int 	tetr_to_bmap(t_bmap *map, t_tetr *tetrimino, int position);
 int		copy_bmap(t_bmap *dst, t_bmap *src);
 int		map_score(t_bmap *map);
-int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino, int ti);
+int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino, int ti, int org);
 void 	del_bmap(t_bmap *map);
 
 /*

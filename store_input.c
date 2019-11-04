@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 16:38:38 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/04 14:40:27 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/04 16:55:00 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,8 @@ int		store_input(char *buf, int tetr_cnt, t_tetr **tetros)
 		tl_cnt++;
 		cnt++;
 	}
+	printf("'%c'\n", tetros[tetr_cnt]->name);
+	print_tetrimino_bmap(tetros[tetr_cnt]);
+	printf("\n");
 	return (1);
 }

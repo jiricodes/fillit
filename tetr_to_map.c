@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetr_to_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/04 12:59:34 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/04 16:45:24 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int 	tetr_to_bmap(t_bmap *map, t_tetr *tetrimino, int position)
 	return (1);
 }
 
-int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino, int ti) /* sending a total count or null terminate tetr array -> linked list?*/
+int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino, int ti, int org) /* sending a total count or null terminate tetr array -> linked list?*/
 {
 	int i;
 	t_bmap res;
@@ -139,9 +139,9 @@ int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino, int ti) /* sending a total
 			init_bmap(&res, map->size);
 			copy_bmap(&res, map);
 			tetr_to_bmap(&res, tetrimino[ti], i);
-			if (tetrimino[ti + 1] != NULL)
+			if (tetrimino[ti + 1] != NULL && ti + 1 < org + 3)
 			{
-				ret = place_tetr_bmap(&res, tetrimino, ti + 1);
+				ret = place_tetr_bmap(&res, tetrimino, ti + 1, org);
 				if (ret == - 1)
 				{
 					i = i + 1;

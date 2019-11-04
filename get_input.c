@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/04 16:27:41 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/04 16:56:13 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ t_tetr			**get_input(char *argv, int *cnt) /*add pointer to maxc int then assign
 	tetr_cnt = 0;
 	buf = (char *)malloc(22 * sizeof(char));
 	fd = open(argv, O_RDONLY); /* protect from fd = - 1 */
-	while ((ret = read(fd, buf, 21)) > 0) /*protect from ret = -1*/
+	while ((ret = read(fd, buf, 21)) > 0) /*protect from ret = -1*/ 
 	{
 		buf[ret] = '\0';
 		strip_tetro(&buf);
