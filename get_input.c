@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/04 17:36:00 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/04 17:36:41 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static int		check_neighbour(char *buf)
 			n_cnt++;
 		x++;
 	}
-	printf("N_count is:%d\n", n_cnt);
 	if (!((n_cnt == 6 || n_cnt == 8) && t_cnt == 4))
 		return (-1);
 	return (1);
