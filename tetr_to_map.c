@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/03 18:40:50 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/04 11:47:18 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int 	tetr_to_bmap(t_bmap *map, t_tetr *tetrimino, int position)
 	return (1);
 }
 
-int		place_tetr_bmap(t_bmap *map, t_tetr *tetrimino)
+int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino, int ti) /* sending a total count or null terminate tetr array -> linked list?*/
 {
 	int i;
 	t_bmap res;
@@ -133,13 +133,23 @@ int		place_tetr_bmap(t_bmap *map, t_tetr *tetrimino)
 	besti = -1;
 	while (i < MS * MS)
 	{
-		ret = check_space(map, i,tetrimino);
-		printf("ret = %d\n", ret);
+		ret = check_space(map, i,tetrimino[ti]);
 		if (ret == 1)
 		{
 			init_bmap(&res, map->size);
 			copy_bmap(&res, map);
-			tetr_to_bmap(&res, tetrimino, i);
+			tetr_to_bmap(&res, tetrimino[ti], i);
+			if (tetrimino[ti + 1] != NULL)
+			{
+				ret = place_tetr_bmap(&res, tetrimino, ti + 1);
+				if (ret == - 1)
+				{
+					i = i + 1;
+					del_bmap(&res);
+					continue ;
+				}
+				tetr_to_bmap(&res, tetrimino [ti + 1], ret);
+			}
 			if (best == 0)
 			{
 				best = map_score(&res);

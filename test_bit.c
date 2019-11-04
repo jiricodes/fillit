@@ -320,7 +320,7 @@ int main (int ac, char **av)
 		srand(time(0));
 		if (!(originals = (t_tetr**)malloc(sizeof(t_tetr*)*19)))
 			return (-1);
-		if (!(tetrimino = (t_tetr**)malloc(sizeof(t_tetr*)*maxc)))
+		if (!(tetrimino = (t_tetr**)malloc(sizeof(t_tetr*)*maxc + 1)))
 			return (-1);
 		i = 0;
 		while (i < maxc)
@@ -347,6 +347,7 @@ int main (int ac, char **av)
 			tetrimino[c]->placed = 0;
 			c = c + 1;
 		}
+		tetrimino[c] = NULL;
 		printf("\n");
 		size = ft_min_sqrt(maxc * 4);
 		printf("Smalles ever possible square for %d tetriminos is %dx%d\n", maxc, size, size);
@@ -356,7 +357,7 @@ int main (int ac, char **av)
 		c = 0;
 		while (c < maxc)
 		{
-			i = place_tetr_bmap(&map, tetrimino[c]);
+			i = place_tetr_bmap(&map, tetrimino, c);
 			if (i == -1)
 			{
 				printf("\033[1;31mFailed to place tetrimino no. %d\033[0m\n", c);
