@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/04 13:06:50 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:22:55 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct	s_bmap
 **	Input functions
 */
 
-t_tetr		**get_input(char *argv);
+t_tetr			**get_input(char *argv, int *cnt);
 int		store_input(char *buf, int tetr_cnt, t_tetr **tetros);
 
 /*

@@ -15,8 +15,10 @@ int main (int ac, char **av)
 	int		ret;
 	int		rng;
 	int		c;
+	int		cnt[0];
 	int		maxc;
 
+	maxc = 0;
 	if (ac != 2)
 	{
 		printf("\033[1;31mWrong amount of arguments. Please select only one positive numerical value as an argument.\033[0m\n");
@@ -24,10 +26,10 @@ int main (int ac, char **av)
 
 	if (ac == 2)
 	{
-		tetrimino = get_input(av[1]);
+		tetrimino = get_input(av[1], cnt);
 		// if (maxc > 26)
 		// 	return(-1);
-		size = ft_min_sqrt(maxc * 4);
+		size = ft_min_sqrt(cnt[0] * 4);
 		printf("Smalles ever possible square for %d tetriminos is %dx%d\n", maxc, size, size);
 		init_bmap(&map, size);
 		init_map(&map_res, size);
