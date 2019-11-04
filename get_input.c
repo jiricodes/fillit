@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/04 16:31:56 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/04 17:01:07 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static int		check_neighbour(char *buf)
 			n_cnt++;
 		x++;
 	}
-	if (n_cnt != 6)
+	printf("N_count is:%d\n", n_cnt);
+	if (!(n_cnt == 6 || n_cnt == 8))
 		return (-1);
 	return (1);
 }
@@ -115,12 +116,12 @@ t_tetr			**get_input(char *argv, int *cnt) /*add pointer to maxc int then assign
 	int		tetr_cnt;
 	t_tetr	**tetros;
 
-	tetros = (t_tetr **)malloc(27 * sizeof(t_tetr *));
+	tetros = (t_tetr **)malloc(26 * sizeof(t_tetr *) + 1);
 	tetr_cnt = 0;
 	buf = (char *)malloc(22 * sizeof(char));
 	if ((fd = open(argv, O_RDONLY)) < 0)
 		return (0);
-	while ((ret = read(fd, buf, 21)) > 0)
+	while ((ret = read(fd, buf, 21)) > 0) /*protect from ret = -1*/
 	{
 		buf[ret] = '\0';
 		strip_tetro(&buf);
@@ -130,8 +131,6 @@ t_tetr			**get_input(char *argv, int *cnt) /*add pointer to maxc int then assign
 			store_input(buf, tetr_cnt, tetros);
 		tetr_cnt++;
 	}
-	if (ret < 0)
-		return (0);
 	free(buf);
 	tetros[tetr_cnt] = 0;
 	cnt[0] = tetr_cnt;
