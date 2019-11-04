@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/04 17:36:41 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/04 17:42:31 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static int		check_neighbour(char *buf)
 
 	x = 0;
 	n_cnt = 0;
+	t_cnt = 0;
 	while (buf[x] != '\0')
 	{
 		while (buf[x] != '#' && buf[x] != '\0')
