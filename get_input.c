@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/04 16:56:13 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/04 17:03:32 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static int		check_neighbour(char *buf)
 			n_cnt++;
 		x++;
 	}
-	if (n_cnt != 6)
+	printf("N_count is:%d\n", n_cnt);
+	if (!(n_cnt == 6 || n_cnt == 8))
 		return (-1);
 	return (1);
 }
@@ -79,7 +80,7 @@ static int		check_input(char *buf)
 **	Format the input
 */
 
-void strip_tetro(char **buf)
+static void 		strip_tetro(char **buf)
 {
 	int	len;
 	int ln_cnt;
@@ -118,8 +119,9 @@ t_tetr			**get_input(char *argv, int *cnt) /*add pointer to maxc int then assign
 	tetros = (t_tetr **)malloc(26 * sizeof(t_tetr *) + 1);
 	tetr_cnt = 0;
 	buf = (char *)malloc(22 * sizeof(char));
-	fd = open(argv, O_RDONLY); /* protect from fd = - 1 */
-	while ((ret = read(fd, buf, 21)) > 0) /*protect from ret = -1*/ 
+	if ((fd = open(argv, O_RDONLY)) < 0)
+		return (0);
+	while ((ret = read(fd, buf, 21)) > 0) /*protect from ret = -1*/
 	{
 		buf[ret] = '\0';
 		strip_tetro(&buf);
