@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/04 17:01:07 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/04 17:33:42 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int		check_neighbour(char *buf)
 {
 	int	x;
 	int	n_cnt;
+	int	t_cnt;
 
 	x = 0;
 	n_cnt = 0;
@@ -28,6 +29,8 @@ static int		check_neighbour(char *buf)
 	{
 		while (buf[x] != '#' && buf[x] != '\0')
 			x++;
+		if (buf[x] == '#')
+			t_cnt++;
 		if (buf[x] == '#' && buf[x + 1] == '#')
 			n_cnt++;
 		if (buf[x] == '#' && buf[x + 5] == '#')
@@ -39,7 +42,7 @@ static int		check_neighbour(char *buf)
 		x++;
 	}
 	printf("N_count is:%d\n", n_cnt);
-	if (!(n_cnt == 6 || n_cnt == 8))
+	if (!((n_cnt == 6 || n_cnt == 8) && t_cnt == 4))
 		return (-1);
 	return (1);
 }
