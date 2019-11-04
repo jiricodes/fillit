@@ -16,9 +16,7 @@ int main (int ac, char **av)
 	int		rng;
 	int		c;
 	int		cnt[0];
-	int		maxc;
 
-	maxc = 0;
 	if (ac != 2)
 	{
 		printf("\033[1;31mWrong amount of arguments. Please select only one positive numerical value as an argument.\033[0m\n");
@@ -27,17 +25,22 @@ int main (int ac, char **av)
 	if (ac == 2)
 	{
 		tetrimino = get_input(av[1], cnt);
-		// if (maxc > 26)
-		// 	return(-1);
+		if (!tetrimino)
+			printf("Tetriminos were not assigned\n");
+		if (cnt[0] > 26 || cnt[0] < 1)
+		{	
+			printf("Cannot run solver with given size - %d\n", cnt[0]);
+		 	return(-1);
+		}
 		size = ft_min_sqrt(cnt[0] * 4);
-		printf("Smalles ever possible square for %d tetriminos is %dx%d\n", maxc, size, size);
+		printf("Smalles ever possible square for %d tetriminos is %dx%d\n", cnt[0], size, size);
 		init_bmap(&map, size);
 		init_map(&map_res, size);
 		printf("\n");
 		c = 0;
 		while (tetrimino[c] != NULL)
 		{
-			i = place_tetr_bmap(&map, tetrimino, c);
+			i = place_tetr_bmap(&map, tetrimino, c, c);
 			if (i == -1)
 			{
 				printf("\033[1;31mFailed to place tetrimino no. %d\033[0m\n", c);
@@ -46,7 +49,7 @@ int main (int ac, char **av)
 				init_bmap(&map, size);
 				free(map_res.tile);
 				init_map(&map_res, size);
-				reset_tetriminos(tetrimino, maxc);
+				reset_tetriminos(tetrimino, cnt[0]);
 				c = 0;
 				printf ("Reseted all and resized map to size = %d\n", size);
 				continue ;
@@ -61,7 +64,7 @@ int main (int ac, char **av)
 		printf("\nSolution (%dx%d)\n", size, size);
 		print_map(&map_res);
 		printf("\n-------------------------\n");
-		while (1) {};
+		// while (1) {};
 	}
 	return (0);
 }
