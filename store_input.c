@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 16:38:38 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/04 12:28:54 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/04 12:32:42 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		get_coords(char *buf, int tetr_cnt, t_tetr **tetros)
 			printf("Head is located at: %d, Current position is: %d\n", head, cnt);
 			printf("Tile %d| X is: %d, Y is: %d\n", tl_cnt, tetros[tetr_cnt]->tile[tl_cnt].x, tetros[tetr_cnt]->tile[tl_cnt].y);
 		}
-		if (buf[cnt] == '#' && tl_cnt < 4)
+		if (buf[cnt] == '#' && tl_cnt > 0)
 		{
 			tetros[tetr_cnt]->tile[tl_cnt].x = ((cnt / 5) - (head / 5));
 			tetros[tetr_cnt]->tile[tl_cnt].y = ((cnt % 5) - (head % 5));
