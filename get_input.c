@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/04 12:39:49 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/04 13:14:11 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*strip_tetro(char *buf)
 	
 }
 
-int		get_input(char **argv)
+t_tetr		**get_input(char *argv) /*add pointer to maxc int then assign tetr_cnt to it before return*/
 {
 	char	*buf;
 	int		fd;
@@ -103,10 +103,10 @@ int		get_input(char **argv)
 	int		tetr_cnt;
 	t_tetr	**tetros;
 
-	tetros = (t_tetr **)malloc(26 * sizeof(t_tetr *));
+	tetros = (t_tetr **)malloc(26 * sizeof(t_tetr *) + 1);
 	tetr_cnt = 0;
 	buf = (char *)malloc(22 * sizeof(char));
-	fd = open(argv[1], O_RDONLY);
+	fd = open(argv, O_RDONLY);
 	while ((ret = read(fd, buf, 21)) > 0)
 	{
 		buf[ret] = '\0';
@@ -116,15 +116,17 @@ int		get_input(char **argv)
 		if ((check_input(buf)) != 1)
 		{
 			printf("Input is shit\n");
-			return (-1);
+			return (0);
 		}
 		else
 		{
 			store_input(buf, tetr_cnt, tetros);
 		}
-
+		print_tetrimino_bmap(tetros[tetr_cnt]);
+		printf("\n");
 		tetr_cnt++;
 	}
 	free(buf);
-	return (1);
+	tetros[tetr_cnt] = 0;
+	return (tetros);
 }
