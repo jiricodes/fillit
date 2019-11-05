@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:54:39 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/05 14:22:14 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/05 15:58:53 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,11 @@ int		main(int argc, char **argv)
 	t_cnt = 0;
 	if (argc == 2)
 	{
-		if (!(tetros = (t_tetr **)malloc(26 * sizeof(t_tetr *) + 1)))
+		if (!(tetros = (t_tetr **)malloc(26 * sizeof(t_tetr *))))
 			ft_puterr(-1);
 		get_input(argv[1], tetros, &t_cnt);
+		if (t_cnt > 26 || t_cnt < 1)
+			ft_puterr(-1);
 		size = ft_min_sqrt(t_cnt * 4);
 		init_bmap(&map, size);
 		init_map(&map_res, size);
@@ -66,7 +68,7 @@ int		main(int argc, char **argv)
 			}
 			tetr_to_bmap(&map, tetros[c], i);
 			tetr_to_map(&map_res, tetros[c], map_res.tile[i].loc.x, map_res.tile[i].loc.y);
-			c++;
+			c = c + 1;
 		}
 		print_map(&map_res);
 	}

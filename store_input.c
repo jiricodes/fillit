@@ -6,14 +6,21 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 16:38:38 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/05 14:07:42 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:12:30 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
-int		store_input(char *buf, int tetr_cnt, t_tetr **tetros)
+static void	init_tetro(t_tetr **tetros, int tetr_cnt)
+{
+	if (!(tetros[tetr_cnt] = (t_tetr *)malloc(sizeof(t_tetr))))
+		ft_puterr(-1);
+	tetros[tetr_cnt]->name = tetr_cnt + 65;
+	tetros[tetr_cnt]->placed = 0;
+}
+
+void		store_input(char *buf, int tetr_cnt, t_tetr **tetros)
 {
 	int cnt;
 	int head;
@@ -21,10 +28,7 @@ int		store_input(char *buf, int tetr_cnt, t_tetr **tetros)
 
 	cnt = 0;
 	tl_cnt = 0;
-	if (!(tetros[tetr_cnt] = (t_tetr *)malloc(sizeof(t_tetr))))
-		return (-1);
-	tetros[tetr_cnt]->name = tetr_cnt + 65;
-	tetros[tetr_cnt]->placed = 0;
+	init_tetro(tetros, tetr_cnt);
 	while (buf[cnt] != '\0')
 	{
 		while (buf[cnt] != '#' && buf[cnt] != '\0')
@@ -43,5 +47,4 @@ int		store_input(char *buf, int tetr_cnt, t_tetr **tetros)
 		tl_cnt++;
 		cnt++;
 	}
-	return (1);
 }

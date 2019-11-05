@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/05 13:31:29 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:00:50 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **	Count neighbour cells to check total number of tiles
 */
 
-static int		check_neighbour(char *buf)
+static void		check_neighbour(char *buf)
 {
 	int	x;
 	int	n_cnt;
@@ -42,15 +42,14 @@ static int		check_neighbour(char *buf)
 		x++;
 	}
 	if (!((n_cnt == 6 || n_cnt == 8) && t_cnt == 4))
-		return (-1);
-	return (1);
+		ft_puterr(-1);
 }
 
 /*
 **	Check for width, length and chars
 */
 
-static int		check_input(char *buf)
+static void		check_input(char *buf)
 {
 	int		x;
 	int		len;
@@ -62,20 +61,18 @@ static int		check_input(char *buf)
 	while (buf[x] != '\0')
 	{
 		if (buf[x] != '.' && buf[x] != '#' && buf[x] != '\n')
-			return (-1);
+			ft_puterr(-1);
 		if (x != 20 && buf[x] == '\n' && x % 5 != 4)
-			return (-1);
+			ft_puterr(-1);
 		if (buf[x] == '\n' || buf[x + 1] == '\0')
 			nl_cnt++;
 		x++;
 	}
+	check_neighbour(buf);
 	if (nl_cnt != 4)
-		return (-1);
+		ft_puterr(-1);
 	if (buf[len - 1] != '\n')
-		return (-1);
-	if (check_neighbour(buf) != 1)
-		return (-1);
-	return (1);
+		ft_puterr(-1);
 }
 
 /*
@@ -125,10 +122,8 @@ void			get_input(char *argv, t_tetr **tetros, int *t_cnt)
 		last_ret = ret;
 		buf[ret] = '\0';
 		strip_tetro(&buf);
-		if ((check_input(buf)) != 1)
-			ft_puterr(-1);
-		else
-			store_input(buf, (*t_cnt), tetros);
+		check_input(buf);
+		store_input(buf, (*t_cnt), tetros);
 		(*t_cnt)++;
 	}
 	if (ret <= 0 && last_ret == 21)
