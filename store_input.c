@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 16:38:38 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/04 16:55:00 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/05 14:07:42 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		store_input(char *buf, int tetr_cnt, t_tetr **tetros)
 	tetros[tetr_cnt]->placed = 0;
 	while (buf[cnt] != '\0')
 	{
-		while (buf[cnt] != '#' && buf[cnt] != '\0') 
+		while (buf[cnt] != '#' && buf[cnt] != '\0')
 			cnt++;
 		if (buf[cnt] == '#' && tl_cnt == 0)
 		{
@@ -43,8 +43,5 @@ int		store_input(char *buf, int tetr_cnt, t_tetr **tetros)
 		tl_cnt++;
 		cnt++;
 	}
-	printf("'%c'\n", tetros[tetr_cnt]->name);
-	print_tetrimino_bmap(tetros[tetr_cnt]);
-	printf("\n");
 	return (1);
 }
