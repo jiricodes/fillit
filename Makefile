@@ -6,11 +6,11 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/23 10:28:32 by jnovotny          #+#    #+#              #
-#    Updated: 2019/11/06 18:30:48 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/11/06 20:15:18 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =  test
+NAME =  fillit
 GEN = tetrogen
 LIB = ./libft/libft.a
 CFLAGS = -Wall -Werror -Wextra
@@ -23,7 +23,7 @@ FTS =	initialize_map.c \
 		error.c \
 		get_input.c \
 		store_input.c \
-		test_bit.c
+		main.c
 GFT = tetrimino_generator.c
 TFILE =	testext1 \
 		testext2 \

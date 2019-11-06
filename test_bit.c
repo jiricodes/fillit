@@ -17,6 +17,7 @@ int main (int ac, char **av)
 	int		c;
 	int		cnt = 0;
 
+
 	if (ac != 2)
 	{
 		printf("\033[1;31mWrong amount of arguments. Please select only one positive numerical value as an argument.\033[0m\n");

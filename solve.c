@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:53:35 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 18:43:15 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 20:07:16 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,34 @@ int		check_line(t_bmap *map, int i)
 	mask = 0;
 	line = map->lines[i/MS];
 	return(mask | line);
+}
+
+/*
+** Checks if a given empty is singled out
+*/
+
+int		check_neighb(t_bmap *map)
+{
+	int i;
+	int res;
+	int empty;
+
+	i = 0;
+	while (i < MS * MS)
+	{
+		if (is_bit_set(map->lines[i/MS], i%MS) && i/MS + 1 < MS)
+		{
+			if (!is_bit_set(map->lines[i/MS + 1], i%MS) && !is_bit_set(map->lines[i/MS], i%MS-1) && !is_bit_set(map->lines[i/MS], i%MS-1))
+				res = res + 1;
+			empty = empty + 1;
+		}
+		if (is_bit_set(map->lines[i/MS], i%MS) && i/MS + 1 == MS)
+		{
+			if (!is_bit_set(map->lines[i/MS], i%MS-1) && !is_bit_set(map->lines[i/MS], i%MS-1))
+				res = res + 1;
+			empty = empty + 1;
+		}
+		i = i + 1;
+	}
+	return (empty - res);
 }

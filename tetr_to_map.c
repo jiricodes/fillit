@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 18:34:54 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 20:28:55 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,54 +57,6 @@ int		tetr_to_bmap(t_bmap *map, t_tetr *tetrimino, int position)
 	return (1);
 }
 
-// int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino, int ti, int org)
-// {
-// 	int		i;
-// 	t_bmap	res;
-// 	int		best;
-// 	int		besti;
-// 	int		ret;
-// 	int		k = 0;
-
-// 	i = 0;
-// 	best = 0;
-// 	besti = -1;
-// 	while (i < MS * MS)
-// 	{
-// 		ret = check_space(map, i, tetrimino[ti]);
-// 		if (ret == 1)
-// 		{
-// 			init_bmap(&res, map->size);
-// 			copy_bmap(&res, map);
-// 			tetr_to_bmap(&res, tetrimino[ti], i);
-// 			if (tetrimino[ti + 1] != NULL)
-// 			{
-// 				ret = place_tetr_bmap(&res, tetrimino, ti + 1, org);
-// 				if (ret == -1)
-// 				{
-// 					i = i + 1;
-// 					del_bmap(&res);
-// 					continue ;
-// 				}
-// 				tetr_to_bmap(&res, tetrimino[ti + 1], ret);
-// 			}
-// 			if (best == 0)
-// 			{
-// 				best = map_score(&res);
-// 				besti = i;
-// 			}
-// 			else if (best > map_score(&res))
-// 			{
-// 				best = map_score(&res);
-// 				besti = i;
-// 			}
-// 			del_bmap(&res);
-// 		}
-// 		i = i + 1;
-// 	}
-// 	return (besti);
-// }
-
 int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino)
 {
 	int		i;
@@ -121,6 +73,8 @@ int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino)
 			j = j + 1;
 			continue ;
 		}
+		if (not_placed_tetr(tetrimino) * 4 > check_neighb(map))
+			return(-1);
 		i = 0;
 		while (i < MS * MS)
 		{
@@ -154,5 +108,7 @@ int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino)
 	}
 	if (not_placed_tetr(tetrimino) == 0)
 		return (1);
+	printf("Round \n");
+	printf("\n\n");
 	return (-2);
 }
