@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 13:03:16 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:03:16 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@
 # define TP tetrimino->placed
 # define TX tetrimino->tile[j].x
 # define TY tetrimino->tile[j].y
+# define TIX tetrimino[ti]->tile[j].x
+# define TIY tetrimino[ti]->tile[j].y
+# define TIN tetrimino[ti]->name
+# define TIP tetrimino[ti]->placed
 
 /*
 ** Coordinates struct for easier readibility of the code
@@ -61,7 +65,6 @@ typedef struct	s_tetrimino
 	char		name;
 	t_coords	tile[4];
 	int			placed;
-	int			spec;
 }				t_tetr;
 
 /*
@@ -94,7 +97,7 @@ void	ft_puterr(int x);
 */
 
 int		init_map(t_map *map, int size);
-int		tetr_to_map(t_map *map, t_tetr *tetrimino, int x, int y);
+int		tetr_to_map(t_map *map, t_tetr **tetrimino);
 void	print_map(t_map *map);
 int		place_tetriminos(t_map *map, t_tetr **tetrimino, int count);
 
@@ -111,7 +114,7 @@ int		check_space(t_bmap *map, int org, t_tetr *tetrimino);
 int 	tetr_to_bmap(t_bmap *map, t_tetr *tetrimino, int position);
 int		copy_bmap(t_bmap *dst, t_bmap *src);
 int		map_score(t_bmap *map);
-int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino, int ti);
+int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino);
 void 	del_bmap(t_bmap *map);
 
 /*
@@ -123,6 +126,7 @@ int		check_tetrimino(t_tetr *tetrimino, t_map *map, int i);
 void	print_tetrimino(t_tetr *tetrimino);
 void	print_tetrimino_bmap(t_tetr *tetrimino);
 void	reset_tetriminos(t_tetr **tetrimino, int count);
+int		not_placed_tetr(t_tetr **tetrimino);
 
 /*
 ** BIT operations functions

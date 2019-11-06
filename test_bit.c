@@ -48,12 +48,14 @@ int main (int ac, char **av)
 		init_map(&map_res, size);
 		printf("\n");
 		c = 0;
-		while (tetrimino[c] != NULL)
+		while (not_placed_tetr(tetrimino))
 		{
-			i = place_tetr_bmap(&map, tetrimino, c);
-			if (i == -1)
+			i = place_tetr_bmap(&map, tetrimino);
+			printf("Test main i = %d\n", i);
+			if (not_placed_tetr(tetrimino))
 			{
-				printf("\033[1;31mFailed to place tetrimino no. %d\033[0m\n", c);
+				
+				printf("\033[1;31mFailed to place tetriminos\033[0m\n");
 				size = size + 1;
 				del_bmap(&map);
 				init_bmap(&map, size);
@@ -64,13 +66,13 @@ int main (int ac, char **av)
 				printf ("Reseted all and resized map to size = %d\n", size);
 				continue ;
 			}
-			printf("Placing '%c' at %d[%d,%d]\n", tetrimino[c]->name, i, map_res.tile[i].loc.x,  map_res.tile[i].loc.y);
-			tetr_to_bmap(&map, tetrimino[c], i);
-			tetr_to_map(&map_res, tetrimino[c], map_res.tile[i].loc.x, map_res.tile[i].loc.y);
-			print_bmap(&map);
-			printf("\n\n");
-			c = c + 1;
 		}
+		if (i == -2)
+			printf("i = -2, WTF?");
+		printf("printing result\n");
+		printf("map size %d\n", map_res.size);
+		tetr_to_map(&map_res, tetrimino);
+		printf("\n\n");
 		printf("\nSolution (%dx%d)\n", size, size);
 		print_map(&map_res);
 		printf("\n-------------------------\n");

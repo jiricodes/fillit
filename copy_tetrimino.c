@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 13:58:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 09:27:56 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:03:01 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,27 @@ void	reset_tetriminos(t_tetr **tetrimino, int count)
 	i = 0;
 	while (i < count)
 	{
-		tetrimino[i]->placed = 0;
+		tetrimino[i]->placed = -1;
 		i = i + 1;
 	}
+}
+
+/*
+** Counts amount of NOT placed tetriminos
+*/
+
+int		not_placed_tetr(t_tetr **tetrimino)
+{
+	int ti;
+	int res;
+
+	ti = 0;
+	res = 0;
+	while (tetrimino[ti] != NULL)
+	{
+		if (TIP == -1)
+			res++;
+		ti++;
+	}
+	return (res);
 }
