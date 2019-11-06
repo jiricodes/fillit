@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 17:03:16 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:34:35 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@
 
 typedef struct	s_coords
 {
-	int	x;
-	int	y;
+	int			x;
+	int			y;
 }				t_coords;
 
 /*
@@ -52,8 +52,8 @@ typedef struct	s_coords
 
 typedef struct	s_tile
 {
-	char value;
-	t_coords loc;
+	char		value;
+	t_coords	loc;
 }				t_tile;
 
 /*
@@ -73,67 +73,66 @@ typedef struct	s_tetrimino
 
 typedef struct	s_map
 {
-	int	size;
-	t_tile	*tile;
+	int			size;
+	t_tile		*tile;
 }				t_map;
-
 
 typedef struct	s_bmap
 {
-	int	size;
-	int	*lines;
+	int			size;
+	int			*lines;
 }				t_bmap;
 
 /*
 **	Input functions
 */
 
-void	get_input(char *argv, t_tetr **tetros, int *t_cnt);
-void	store_input(char *buf, int tetr_cnt, t_tetr **tetros);
-void	ft_puterr(int x);
+void			get_input(char *argv, t_tetr **tetros, int *t_cnt);
+void			store_input(char *buf, int tetr_cnt, t_tetr **tetros);
+void			ft_puterr(int x);
 
 /*
 **	Map functions
 */
 
-int		init_map(t_map *map, int size);
-int		tetr_to_map(t_map *map, t_tetr **tetrimino);
-void	print_map(t_map *map);
-int		place_tetriminos(t_map *map, t_tetr **tetrimino, int count);
+int				init_map(t_map *map, int size);
+int				tetr_to_map(t_map *map, t_tetr **tetrimino);
+void			print_map(t_map *map);
+int				place_tetriminos(t_map *map, t_tetr **tetrimino, int count);
 
 /*
 **	BitMaps lol
 */
 
-int		init_bmap(t_bmap *map, int size);
-int		rule_one(t_bmap *map, int i, int j);
-int		rule_two(t_bmap *map, int i, int j);
-int		rule_three(t_bmap *map, int i, int j);
-void	print_bmap(t_bmap *map);
-int		check_space(t_bmap *map, int org, t_tetr *tetrimino);
-int 	tetr_to_bmap(t_bmap *map, t_tetr *tetrimino, int position);
-int		copy_bmap(t_bmap *dst, t_bmap *src);
-int		map_score(t_bmap *map);
-int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino);
-void 	del_bmap(t_bmap *map);
+int				init_bmap(t_bmap *map, int size);
+int				rule_one(t_bmap *map, int i, int j);
+int				rule_two(t_bmap *map, int i, int j);
+int				rule_three(t_bmap *map, int i, int j);
+void			print_bmap(t_bmap *map);
+int				check_space(t_bmap *map, int org, t_tetr *tetrimino);
+int				tetr_to_bmap(t_bmap *map, t_tetr *tetrimino, int position);
+int				copy_bmap(t_bmap *dst, t_bmap *src);
+int				map_score(t_bmap *map);
+int				place_tetr_bmap(t_bmap *map, t_tetr **tetrimino);
+void			del_bmap(t_bmap *map);
 
 /*
 ** Tetrimino functions
 */
 
-void	copy_tetrimino(t_tetr *t1, t_tetr *t2);
-int		check_tetrimino(t_tetr *tetrimino, t_map *map, int i);
-void	print_tetrimino(t_tetr *tetrimino);
-void	print_tetrimino_bmap(t_tetr *tetrimino);
-void	reset_tetriminos(t_tetr **tetrimino, int count);
-int		not_placed_tetr(t_tetr **tetrimino);
+void			copy_tetrimino(t_tetr *t1, t_tetr *t2);
+int				check_tetrimino(t_tetr *tetrimino, t_map *map, int i);
+void			print_tetrimino(t_tetr *tetrimino);
+void			print_tetrimino_bmap(t_tetr *tetrimino);
+void			reset_tetriminos(t_tetr **tetrimino, int count);
+int				not_placed_tetr(t_tetr **tetrimino);
 
 /*
 ** BIT operations functions
 */
 
-int is_bit_set(int x, int i);
-int set_bit(int x, int i);
-int clear_bit(int x, int i);
+int				is_bit_set(int x, int i);
+int				set_bit(int x, int i);
+int				clear_bit(int x, int i);
 
 #endif
