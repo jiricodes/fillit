@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 13:11:20 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:31:32 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,27 @@
 ** Maybe change to receive index instad of coords
 */
 
-int		tetr_to_map(t_map *map, t_tetr *tetrimino, int x, int y)
+int		tetr_to_map(t_map *map, t_tetr **tetrimino)
 {
 	int i;
 	int j;
+	int ti;
 
-	j = 0;
-	i = 0;
-	while (j < 4)
+	ti = 0;
+	while (tetrimino[ti] != NULL)
 	{
-		while (!(MX == x + TX && MY == y + TY))
-			i = i + 1;
-		MV = TN;
-		j = j + 1;
+		printf("Placing Tetrimino '%c' on map tile[%d]", TIN, TIP);
+		j = 0;
+		i = 0;
+		while (j < 4)
+		{
+			while (!(MX == map->tile[TIP].loc.x + TIX && MY == map->tile[TIP].loc.y + TIY))
+				i = i + 1;
+			MV = TIN;
+			j = j + 1;
+		}
+		ti++;
 	}
-	tetrimino->placed = 1;
 	return (0);
 }
 
@@ -100,36 +106,53 @@ int		tetr_to_bmap(t_bmap *map, t_tetr *tetrimino, int position)
 // 	return (besti);
 // }
 
-int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino, int ti)
+int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino)
 {
 	int		i;
 	t_bmap	res;
 	int		ret;
 	int		retn;
-	int		k;
+	int		j;
 
-	i = 0;
-	if (tetrimino[ti] != NULL)
+	j = 0;
+	while (tetrimino[j] != NULL)
 	{
+		if (tetrimino[j]->placed != -1)
+		{
+			j = j + 1;
+			continue ;
+		}
+		i = 0;
 		while (i < MS * MS)
 		{
-			ret = check_space(map, i, tetrimino[ti]);
+			ret = check_space(map, i, tetrimino[j]);
 			if (ret == 1)
  			{
-				k = 1;
 	 			init_bmap(&res, map->size);
 	 			copy_bmap(&res, map);
- 				tetr_to_bmap(&res, tetrimino[ti], i);
-				while (-1 == (retn = place_tetr_bmap(&res, tetrimino, ti + k)))
-					k = k + 1;
-				if (ret >= 0)
+ 				tetr_to_bmap(&res, tetrimino[j], i);
+				printf("tetr[%d] | map.tile[%d]\n", j, i);
+				print_bmap(&res);
+				printf("\n");
+				tetrimino[j]->placed = i;
+				retn = place_tetr_bmap(&res, tetrimino);
+				printf("retn = %d\n", retn);
+				if (retn == 1)
 					break ;
+				del_bmap(&res);
 			}
 			i = i + 1;
 		}
 		if (i == MS * MS)
-			return (-1);
-		return (i);
+		{
+			tetrimino[j]->placed = -1;
+			j = j + 1;
+			continue ;
+		}
+		tetrimino[j]->placed = i;
+		return (1);
 	}
+	if (not_placed_tetr (tetrimino) == 0)
+		return(1);
 	return (-2);
 }

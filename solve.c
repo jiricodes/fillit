@@ -6,32 +6,12 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:53:35 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 09:54:40 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:36:22 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
-
-int		check_tetrimino(t_tetr *tetrimino, t_map *map, int i)
-{
-	int j;
-
-	j = 0;
-	if (TT[1].y == -2 && MT[i - 1].value == '.' && MT[i - 2].value == '.')
-	{
-		tetrimino->spec = 1;
-		return (-1);
-	}
-	if ((TT[1].y == -1 || TT[2].y == -1) && MT[i - 1].value == '.' \
-		&& MT[i - 1 + MS].value == '.')
-	{
-		tetrimino->spec = 1;
-		return (-1);
-	}
-	tetrimino->spec = 0;
-	return (1);
-}
 
 int		check_space(t_bmap *map, int org, t_tetr *tetrimino)
 {
