@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 11:58:02 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 13:11:20 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,49 +52,84 @@ int		tetr_to_bmap(t_bmap *map, t_tetr *tetrimino, int position)
 	return (1);
 }
 
-int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino, int ti, int org)
+// int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino, int ti, int org)
+// {
+// 	int		i;
+// 	t_bmap	res;
+// 	int		best;
+// 	int		besti;
+// 	int		ret;
+// 	int		k = 0;
+
+// 	i = 0;
+// 	best = 0;
+// 	besti = -1;
+// 	while (i < MS * MS)
+// 	{
+// 		ret = check_space(map, i, tetrimino[ti]);
+// 		if (ret == 1)
+// 		{
+// 			init_bmap(&res, map->size);
+// 			copy_bmap(&res, map);
+// 			tetr_to_bmap(&res, tetrimino[ti], i);
+// 			if (tetrimino[ti + 1] != NULL)
+// 			{
+// 				ret = place_tetr_bmap(&res, tetrimino, ti + 1, org);
+// 				if (ret == -1)
+// 				{
+// 					i = i + 1;
+// 					del_bmap(&res);
+// 					continue ;
+// 				}
+// 				tetr_to_bmap(&res, tetrimino[ti + 1], ret);
+// 			}
+// 			if (best == 0)
+// 			{
+// 				best = map_score(&res);
+// 				besti = i;
+// 			}
+// 			else if (best > map_score(&res))
+// 			{
+// 				best = map_score(&res);
+// 				besti = i;
+// 			}
+// 			del_bmap(&res);
+// 		}
+// 		i = i + 1;
+// 	}
+// 	return (besti);
+// }
+
+int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino, int ti)
 {
 	int		i;
 	t_bmap	res;
-	int		best;
-	int		besti;
 	int		ret;
+	int		retn;
+	int		k;
 
 	i = 0;
-	best = 0;
-	besti = -1;
-	while (i < MS * MS)
+	if (tetrimino[ti] != NULL)
 	{
-		ret = check_space(map, i, tetrimino[ti]);
-		if (ret == 1)
+		while (i < MS * MS)
 		{
-			init_bmap(&res, map->size);
-			copy_bmap(&res, map);
-			tetr_to_bmap(&res, tetrimino[ti], i);
-			if (tetrimino[ti + 1] != NULL && ti + 1 < org + 4)
-			{
-				ret = place_tetr_bmap(&res, tetrimino, ti + 1, org);
-				if (ret == -1)
-				{
-					i = i + 1;
-					del_bmap(&res);
-					continue ;
-				}
-				tetr_to_bmap(&res, tetrimino[ti + 1], ret);
+			ret = check_space(map, i, tetrimino[ti]);
+			if (ret == 1)
+ 			{
+				k = 1;
+	 			init_bmap(&res, map->size);
+	 			copy_bmap(&res, map);
+ 				tetr_to_bmap(&res, tetrimino[ti], i);
+				while (-1 == (retn = place_tetr_bmap(&res, tetrimino, ti + k)))
+					k = k + 1;
+				if (ret >= 0)
+					break ;
 			}
-			if (best == 0)
-			{
-				best = map_score(&res);
-				besti = i;
-			}
-			else if (best > map_score(&res))
-			{
-				best = map_score(&res);
-				besti = i;
-			}
-			del_bmap(&res);
+			i = i + 1;
 		}
-		i = i + 1;
+		if (i == MS * MS)
+			return (-1);
+		return (i);
 	}
-	return (besti);
+	return (-2);
 }
