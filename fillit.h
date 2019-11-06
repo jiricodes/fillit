@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/04 16:39:09 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:06:25 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,9 @@ typedef struct	s_bmap
 **	Input functions
 */
 
-t_tetr			**get_input(char *argv, int *cnt);
-int		store_input(char *buf, int tetr_cnt, t_tetr **tetros);
+void	ft_puterr(int x);
+void	get_input(char *argv, t_tetr **tetros, int *cnt);
+void	store_input(char *buf, int tetr_cnt, t_tetr **tetros);
 
 /*
 **	Map functions
