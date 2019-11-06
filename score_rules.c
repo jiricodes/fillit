@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 22:06:41 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 12:02:05 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 12:05:03 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int		map_score(t_bmap *map)
 		res = res + rule_one(map, x, y) + rule_two(map, x, y) + rule_three(map, x, y);
 		i = i + 1;
 	}
-	printf("Score %d\n", res);
 	return (res);
 }
 

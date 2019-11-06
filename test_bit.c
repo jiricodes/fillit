@@ -50,7 +50,7 @@ int main (int ac, char **av)
 		c = 0;
 		while (tetrimino[c] != NULL)
 		{
-			i = place_tetr_bmap(&map, tetrimino, c, c);
+			i = place_tetr_bmap(&map, tetrimino, c);
 			if (i == -1)
 			{
 				printf("\033[1;31mFailed to place tetrimino no. %d\033[0m\n", c);
