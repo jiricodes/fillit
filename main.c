@@ -6,14 +6,14 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:54:39 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/06 17:46:31 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:43:48 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 /*
-**	Display error message, exit the program
+**	Main
 */
 
 int		main(int argc, char **argv)
@@ -23,7 +23,6 @@ int		main(int argc, char **argv)
 	int		size;
 	t_map	map_res;
 	t_bmap	map;
-	int		c;
 	int		i;
 
 	t_cnt = 0;
@@ -37,7 +36,6 @@ int		main(int argc, char **argv)
 		size = ft_min_sqrt(t_cnt * 4);
 		init_bmap(&map, size);
 		init_map(&map_res, size);
-		c = 0;
 		while (not_placed_tetr(tetros))
 		{
 			i = place_tetr_bmap(&map, tetros);
@@ -49,13 +47,10 @@ int		main(int argc, char **argv)
 				free(map_res.tile);
 				init_map(&map_res, size);
 				reset_tetriminos(tetros, t_cnt);
-				c = 0;
 				continue ;
 			}
-			tetr_to_bmap(&map, tetros[c], i);
-			tetr_to_map(&map_res, tetros);
-			c = c + 1;
 		}
+		tetr_to_map(&map_res, tetros);
 		print_map(&map_res);
 	}
 	else
