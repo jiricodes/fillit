@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:54:39 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/05 15:58:53 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:46:31 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,6 @@
 /*
 **	Display error message, exit the program
 */
-
-void	ft_puterr(int x)
-{
-	if (x == 0)
-	{
-		ft_putstr("usage: ./fillit file_with_tetriminoes\n");
-		exit(0);
-	}
-	if (x == -1)
-	{
-		ft_putstr("error\n");
-		exit(0);
-	}
-}
 
 int		main(int argc, char **argv)
 {
@@ -52,10 +38,10 @@ int		main(int argc, char **argv)
 		init_bmap(&map, size);
 		init_map(&map_res, size);
 		c = 0;
-		while (tetros[c] != NULL)
+		while (not_placed_tetr(tetros))
 		{
-			i = place_tetr_bmap(&map, tetros, c, c);
-			if (i == -1)
+			i = place_tetr_bmap(&map, tetros);
+			if (not_placed_tetr(tetros))
 			{
 				size = size + 1;
 				del_bmap(&map);
@@ -67,7 +53,7 @@ int		main(int argc, char **argv)
 				continue ;
 			}
 			tetr_to_bmap(&map, tetros[c], i);
-			tetr_to_map(&map_res, tetros[c], map_res.tile[i].loc.x, map_res.tile[i].loc.y);
+			tetr_to_map(&map_res, tetros);
 			c = c + 1;
 		}
 		print_map(&map_res);
