@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 17:03:16 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:24:30 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,9 @@ int		not_placed_tetr(t_tetr **tetrimino);
 ** BIT operations functions
 */
 
-int is_bit_set(int x, int i);
-int set_bit(int x, int i);
-int clear_bit(int x, int i);
+int		is_bit_set(int x, int i);
+int		set_bit(int x, int i);
+int		clear_bit(int x, int i);
+int		check_line(t_bmap *map, int i);
 
 #endif

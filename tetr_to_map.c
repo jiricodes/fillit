@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetr_to_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 17:57:06 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:34:54 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,11 @@ int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino)
 		i = 0;
 		while (i < MS * MS)
 		{
+			if (check_line(map, i) == 0)
+			{
+				i = (i / MS) * MS + MS;
+				continue ;
+			}
 			ret = check_space(map, i, tetrimino[j]);
 			if (ret == 1)
 			{
