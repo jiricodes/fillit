@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compare_map.c                                      :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/01 17:37:06 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/04 14:52:24 by jnovotny         ###   ########.fr       */
+/*   Created: 2019/11/06 10:47:16 by jnovotny          #+#    #+#             */
+/*   Updated: 2019/11/06 10:47:29 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 /*
-**	Returns "Map Score" based on given rules.
+**	Display error message, exit the program
 */
 
-int	map_score(t_bmap *map)
+void	ft_puterr(int x)
 {
-	int res;
-
-	res = rule_one(map) + rule_two(map) + rule_three(map);
-	return (res);
+	if (x == 0)
+	{
+		ft_putstr("usage: ./fillit file_with_tetriminoes\n");
+		exit(0);
+	}
+	if (x == -1)
+	{
+		ft_putstr("error\n");
+		exit(0);
+	}
 }

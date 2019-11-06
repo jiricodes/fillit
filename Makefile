@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/23 10:28:32 by jnovotny          #+#    #+#              #
-#    Updated: 2019/11/04 17:02:06 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/11/06 10:47:40 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ FTS =	initialize_map.c \
 		copy_tetrimino.c \
 		solve.c \
 		tetr_to_map.c \
-		compare_map.c \
+		error.c \
 		get_input.c \
 		store_input.c \
 		test_bit.c

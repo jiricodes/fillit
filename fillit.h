@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/05 16:06:25 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/06 10:58:29 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ typedef struct	s_bmap
 **	Input functions
 */
 
-void	ft_puterr(int x);
-void	get_input(char *argv, t_tetr **tetros, int *cnt);
+void	get_input(char *argv, t_tetr **tetros, int *t_cnt);
 void	store_input(char *buf, int tetr_cnt, t_tetr **tetros);
+void	ft_puterr(int x);
 
 /*
 **	Map functions
@@ -103,9 +103,9 @@ int		place_tetriminos(t_map *map, t_tetr **tetrimino, int count);
 */
 
 int		init_bmap(t_bmap *map, int size);
-int		rule_one(t_bmap *map);
-int		rule_two(t_bmap *map);
-int		rule_three(t_bmap *map);
+int		rule_one(t_bmap *map, int i, int j);
+int		rule_two(t_bmap *map, int i, int j);
+int		rule_three(t_bmap *map, int i, int j);
 void	print_bmap(t_bmap *map);
 int		check_space(t_bmap *map, int org, t_tetr *tetrimino);
 int 	tetr_to_bmap(t_bmap *map, t_tetr *tetrimino, int position);

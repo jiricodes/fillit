@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 21:37:50 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/04 14:50:57 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 09:25:50 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** otherwise it returns some value which != 0
 */
 
-int is_bit_set(int x, int i)
+int	is_bit_set(int x, int i)
 {
 	int mask;
 
@@ -29,7 +29,7 @@ int is_bit_set(int x, int i)
 ** Sets bit in given int at positin i to 1.
 */
 
-int set_bit(int x, int i)
+int	set_bit(int x, int i)
 {
 	int mask;
 
@@ -41,7 +41,7 @@ int set_bit(int x, int i)
 ** Clears bit in given int at position i.
 */
 
-int clear_bit(int x, int i)
+int	clear_bit(int x, int i)
 {
 	int mask;
 

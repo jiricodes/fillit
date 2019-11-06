@@ -6,13 +6,12 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 13:58:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/04 14:54:38 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 09:27:56 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
-
 
 /*
 ** Copies tetrimino t2 to t1. Currently not in use.
@@ -41,7 +40,7 @@ void	print_tetrimino_bmap(t_tetr *tetrimino)
 {
 	t_bmap	map;
 	int		i;
-	int ret;
+	int		ret;
 
 	i = 0;
 	init_bmap(&map, 4);
@@ -51,7 +50,7 @@ void	print_tetrimino_bmap(t_tetr *tetrimino)
 		if (ret)
 		{
 			tetr_to_bmap(&map, tetrimino, i);
-			break;
+			break ;
 		}
 		i = i + 1;
 	}

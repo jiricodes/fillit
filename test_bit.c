@@ -24,7 +24,7 @@ int main (int ac, char **av)
 
 	if (ac == 2)
 	{
-		tetrimino = get_input(av[1], cnt);
+		get_input(av[1], tetrimino, cnt);
 		if (!tetrimino)
 			printf("Tetriminos were not assigned\n");
 		if (cnt[0] > 26 || cnt[0] < 1)

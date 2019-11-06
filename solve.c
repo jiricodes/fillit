@@ -6,14 +6,14 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:53:35 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/04 11:37:10 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 09:54:40 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
 
-int	check_tetrimino(t_tetr *tetrimino, t_map *map, int i)
+int		check_tetrimino(t_tetr *tetrimino, t_map *map, int i)
 {
 	int j;
 
@@ -33,16 +33,15 @@ int	check_tetrimino(t_tetr *tetrimino, t_map *map, int i)
 	return (1);
 }
 
-int	check_space(t_bmap *map, int org, t_tetr *tetrimino)
+int		check_space(t_bmap *map, int org, t_tetr *tetrimino)
 {
 	int i;
 	int j;
 	int k;
+
 	i = org / MS;
 	k = org % MS;
 	j = 0;
-	// if (!is_bit_set(map->lines[i], k))
-	// 		return (0);
 	while (j < 4)
 	{
 		if (i + TX >= MS || k + TY >= MS || k + TY < 0)
