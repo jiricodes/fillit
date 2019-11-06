@@ -6,17 +6,18 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 22:06:41 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/04 18:43:41 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 09:59:14 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 /*
-** Rule 1: Applies to an empty cell right of column with the empty block on the same or lower level
+** Rule 1: Applies to an empty cell right of column with the empty block
+** on the same or lower level
 */
 
-int rule_one(t_bmap *map)
+int		rule_one(t_bmap *map)
 {
 	int i;
 	int j;
@@ -29,7 +30,8 @@ int rule_one(t_bmap *map)
 		j = 0;
 		while (j < map->size)
 		{
-			if ((j > 0) && is_bit_set(map->lines[i], j) &&  (!is_bit_set(map->lines[i], j - 1)))
+			if ((j > 0) && is_bit_set(map->lines[i], j) \
+				&& (!is_bit_set(map->lines[i], j - 1)))
 				res = res + ((MS - i) * (MS - i));
 			j = j + 1;
 		}
@@ -39,10 +41,11 @@ int rule_one(t_bmap *map)
 }
 
 /*
-** Rule 2: Applies to an empty cell above the bottom most filled cell in the same column
+** Rule 2: Applies to an empty cell above the bottom most filled
+** cell in the same column
 */
 
-int rule_two(t_bmap *map)
+int		rule_two(t_bmap *map)
 {
 	int i;
 	int j;
@@ -59,10 +62,11 @@ int rule_two(t_bmap *map)
 			k = 0;
 			while (k + i < map->size)
 			{
-				if (is_bit_set(map->lines[i], j) && (!is_bit_set(map->lines[i + k], j)))
+				if (is_bit_set(map->lines[i], j) \
+					&& (!is_bit_set(map->lines[i + k], j)))
 				{
 					res = res + ((MS - i) * (MS - i) * (MS - i));
-					break ; 
+					break ;
 				}
 				k = k + 1;
 			}
@@ -74,10 +78,11 @@ int rule_two(t_bmap *map)
 }
 
 /*
-**	Rule 3: Applies to an empty cell left of column with the empty block on the same or lower level
+** Rule 3: Applies to an empty cell left of column with the empty block
+** on the same or lower level
 */
 
-int rule_three(t_bmap *map)
+int		rule_three(t_bmap *map)
 {
 	int i;
 	int j;
@@ -90,7 +95,8 @@ int rule_three(t_bmap *map)
 		j = 0;
 		while (j < map->size - 1)
 		{
-			if (is_bit_set(map->lines[i], j) &&  (!is_bit_set(map->lines[i], j + 1)))
+			if (is_bit_set(map->lines[i], j) \
+				&& (!is_bit_set(map->lines[i], j + 1)))
 				res = res + ((MS - i + 1) * (MS - i + 1));
 			j = j + 1;
 		}

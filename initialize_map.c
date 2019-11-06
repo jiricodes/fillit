@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:57:45 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/04 14:57:48 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 09:28:43 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Initializes empty t_map of given size.
 */
 
-int	init_map(t_map *map, int size)
+int		init_map(t_map *map, int size)
 {
 	int i;
 
@@ -38,7 +38,7 @@ int	init_map(t_map *map, int size)
 ** Initializes empty t_bmap (BitMap) of given size.
 */
 
-int init_bmap(t_bmap *map, int size)
+int		init_bmap(t_bmap *map, int size)
 {
 	int i;
 	int one;
@@ -65,7 +65,7 @@ int init_bmap(t_bmap *map, int size)
 ** Copies line values from source BitMap to destination BitMap.
 */
 
-int	copy_bmap(t_bmap *dst, t_bmap *src)
+int		copy_bmap(t_bmap *dst, t_bmap *src)
 {
 	int		i;
 
@@ -86,7 +86,7 @@ int	copy_bmap(t_bmap *dst, t_bmap *src)
 ** Map cleanse
 */
 
-void del_bmap(t_bmap *map)
+void	del_bmap(t_bmap *map)
 {
 	free(map->lines);
 	map = NULL;
