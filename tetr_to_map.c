@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetr_to_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 17:31:32 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:57:06 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int		tetr_to_map(t_map *map, t_tetr **tetrimino)
 	ti = 0;
 	while (tetrimino[ti] != NULL)
 	{
-		printf("Placing Tetrimino '%c' on map tile[%d]", TIN, TIP);
 		j = 0;
 		i = 0;
 		while (j < 4)
@@ -127,16 +126,12 @@ int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino)
 		{
 			ret = check_space(map, i, tetrimino[j]);
 			if (ret == 1)
- 			{
-	 			init_bmap(&res, map->size);
-	 			copy_bmap(&res, map);
- 				tetr_to_bmap(&res, tetrimino[j], i);
-				printf("tetr[%d] | map.tile[%d]\n", j, i);
-				print_bmap(&res);
-				printf("\n");
+			{
+				init_bmap(&res, map->size);
+				copy_bmap(&res, map);
+				tetr_to_bmap(&res, tetrimino[j], i);
 				tetrimino[j]->placed = i;
 				retn = place_tetr_bmap(&res, tetrimino);
-				printf("retn = %d\n", retn);
 				if (retn == 1)
 					break ;
 				del_bmap(&res);
@@ -152,7 +147,7 @@ int		place_tetr_bmap(t_bmap *map, t_tetr **tetrimino)
 		tetrimino[j]->placed = i;
 		return (1);
 	}
-	if (not_placed_tetr (tetrimino) == 0)
-		return(1);
+	if (not_placed_tetr(tetrimino) == 0)
+		return (1);
 	return (-2);
 }
