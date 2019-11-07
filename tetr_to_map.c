@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetr_to_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:03:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/07 10:55:43 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/07 11:29:29 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		tetr_to_map(t_map *map, t_tetr **tetrimino)
 		}
 		ti++;
 	}
+	print_map(map);
 	return (0);
 }
 

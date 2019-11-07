@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_tetrimino.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 13:58:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 17:03:01 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/07 11:52:52 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,15 @@ void	print_tetrimino_bmap(t_tetr *tetrimino)
 ** Resets tetriminos' placement value
 */
 
-void	reset_tetriminos(t_tetr **tetrimino, int count)
+void	reset_tetriminos(t_tetr **tetrimino)
 {
-	int i;
+	int ti;
 
-	i = 0;
-	while (i < count)
+	ti = 0;
+	while (tetrimino[ti] != NULL)
 	{
-		tetrimino[i]->placed = -1;
-		i = i + 1;
+		TIP = -1;
+		ti++;
 	}
 }
 

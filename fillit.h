@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/07 10:54:37 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/07 11:41:24 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,7 @@ int				check_index(t_bmap *map, t_tetr **tetrimino, int ti);
 void			copy_tetrimino(t_tetr *t1, t_tetr *t2);
 int				check_tetrimino(t_tetr *tetrimino, t_map *map, int i);
 void			print_tetrimino(t_tetr *tetrimino);
-void			print_tetrimino_bmap(t_tetr *tetrimino);
-void			reset_tetriminos(t_tetr **tetrimino, int count);
+void			reset_tetriminos(t_tetr **tetrimino);
 int				not_placed_tetr(t_tetr **tetrimino);
 
 /*

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
+#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/23 10:28:32 by jnovotny          #+#    #+#              #
-#    Updated: 2019/11/06 20:15:18 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/11/07 11:24:43 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

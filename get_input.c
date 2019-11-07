@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:29:11 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/06 11:50:28 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/07 11:31:19 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void			get_input(char *argv, t_tetr **tetros, int *t_cnt)
 		store_input(buf, (*t_cnt), tetros);
 		(*t_cnt)++;
 	}
-	if ((ret <= 0 && last_ret == 21) || (*t_cnt) > 26)
+	if ((ret <= 0 && last_ret == 21) || (*t_cnt) > 26 || (*t_cnt) < 1)
 		ft_puterr(-1);
 	free(buf);
 	tetros[(*t_cnt)] = NULL;
