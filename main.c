@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:54:39 by asolopov          #+#    #+#             */
-/*   Updated: 2019/11/07 11:53:51 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/11/07 12:00:17 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	reset_map(t_bmap *map, t_map *map_res, t_tetr **tetros)
 	reset_tetriminos(tetros);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_tetr	**tetros;
 	int		size;
