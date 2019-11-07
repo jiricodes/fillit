@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:17:32 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 20:28:03 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/07 10:54:37 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@
 
 # define MS map->size
 # define MT map->tile
+# define ML map->lines
 # define MV map->tile[i].value
 # define MX map->tile[i].loc.x
 # define MY map->tile[i].loc.y
+# define MTX map->tile[TIP].loc.x
+# define MTY map->tile[TIP].loc.y
 # define TN tetrimino->name
 # define TT tetrimino->tile
 # define TP tetrimino->placed
@@ -35,6 +38,7 @@
 # define TIY tetrimino[ti]->tile[j].y
 # define TIN tetrimino[ti]->name
 # define TIP tetrimino[ti]->placed
+# define IBS is_bit_set
 
 /*
 ** Coordinates struct for easier readibility of the code
@@ -101,21 +105,20 @@ void			print_map(t_map *map);
 int				place_tetriminos(t_map *map, t_tetr **tetrimino, int count);
 
 /*
-**	BitMaps lol
+**	BitMaps
 */
 
 int				init_bmap(t_bmap *map, int size);
-int				rule_one(t_bmap *map, int i, int j);
-int				rule_two(t_bmap *map, int i, int j);
-int				rule_three(t_bmap *map, int i, int j);
 void			print_bmap(t_bmap *map);
 int				check_space(t_bmap *map, int org, t_tetr *tetrimino);
 int				tetr_to_bmap(t_bmap *map, t_tetr *tetrimino, int position);
 int				copy_bmap(t_bmap *dst, t_bmap *src);
-int				map_score(t_bmap *map);
+int				init_cpy_bmap(t_bmap *map, t_bmap *org, int size);
 int				place_tetr_bmap(t_bmap *map, t_tetr **tetrimino);
 void			del_bmap(t_bmap *map);
 int				check_neighb(t_bmap *map);
+int				is_skip(t_bmap *map, t_tetr **tetrimino);
+int				check_index(t_bmap *map, t_tetr **tetrimino, int ti);
 
 /*
 ** Tetrimino functions
@@ -132,9 +135,9 @@ int				not_placed_tetr(t_tetr **tetrimino);
 ** BIT operations functions
 */
 
-int		is_bit_set(int x, int i);
-int		set_bit(int x, int i);
-int		clear_bit(int x, int i);
-int		check_line(t_bmap *map, int i);
+int				is_bit_set(int x, int i);
+int				set_bit(int x, int i);
+int				clear_bit(int x, int i);
+int				check_line(t_bmap *map, int i);
 
 #endif

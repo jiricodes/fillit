@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:57:45 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/06 09:28:43 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/07 10:56:20 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,17 @@ int		copy_bmap(t_bmap *dst, t_bmap *src)
 		dst->lines[i] = src->lines[i];
 		i = i + 1;
 	}
+	return (0);
+}
+
+/*
+** Line space saving init and cpy together function
+*/
+
+int		init_cpy_bmap(t_bmap *map, t_bmap *org, int size)
+{
+	init_bmap(map, size);
+	copy_bmap(map, org);
 	return (0);
 }
 
